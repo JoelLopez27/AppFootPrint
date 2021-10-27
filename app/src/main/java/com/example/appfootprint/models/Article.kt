@@ -2,6 +2,7 @@ package com.example.appfootprint.models
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 @Entity(
     tableName = "articles"
@@ -26,4 +27,4 @@ data class Article(
     val url: String,
     @SerializedName("urlToImage")
     val urlToImage: String
-)
+) : Serializable
