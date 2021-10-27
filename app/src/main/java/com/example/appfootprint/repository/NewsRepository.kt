@@ -11,4 +11,9 @@ class NewsRepository(
     suspend fun getBreakingNews(selectedTopic: String, selectedLanguage: String, comeFisrt: String,
                                 pageNumber: Int) = RetrofitInstance.api.getBreakingNews(selectedTopic, selectedLanguage, comeFisrt, pageNumber)
 
+    suspend fun upsert(article: Article) = db.getArticleDao().upsert(article)
+
+    fun getSavedNews() = db.getArticleDao().getAllArticles()
+
+    suspend fun deleteArticle(article: Article) = db.getArticleDao().deleteArticle(article)
 }
