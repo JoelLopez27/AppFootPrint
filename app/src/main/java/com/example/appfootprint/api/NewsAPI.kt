@@ -1,12 +1,14 @@
 package com.example.appfootprint.api
 
-interface NewsAPI {
 
 import com.example.appfootprint.models.NewsResponse
 import com.example.appfootprint.util.Constants.Companion.API_KEY
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
+
+interface NewsAPI {
+    
     @GET("v2/everything")
 
     suspend fun getBreakingNews(
@@ -21,5 +23,5 @@ import retrofit2.http.Query
         @Query("apiKey")
         apiKey: String = API_KEY
     ): Response<NewsResponse>
-
+ //Hola
 }
