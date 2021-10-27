@@ -3,6 +3,7 @@ package com.example.appfootprint.ui.news
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.appfootprint.models.Article
 import com.example.appfootprint.models.NewsResponse
 import com.example.appfootprint.repository.NewsRepository
 import com.example.appfootprint.util.Resource
@@ -36,6 +37,16 @@ class BreakingNewsViewModel(
         }
         return Resource.Error(response.message())
 
+    }
+
+    fun saveArticle(article: Article) = viewModelScope.launch {
+        newsRepository.upsert(article)
+    }
+
+    fun getSavedNews() = newsRepository.getSavedNews()
+
+    fun deleteArticle(article: Article) = viewModelScope.launch {
+        newsRepository.deleteArticle(article)
     }
 
 }
