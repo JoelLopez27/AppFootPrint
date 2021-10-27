@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.appfootprint.MainActivity
 import com.example.appfootprint.R
@@ -21,6 +22,7 @@ class BreakingNewsFragment : Fragment() {
 
     lateinit var viewModel: BreakingNewsViewModel
     lateinit var newsAdapter: NewsAdapter
+
     val TAG = "BreakingNewsFragment"
 
     override fun onCreateView(
@@ -32,6 +34,14 @@ class BreakingNewsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = (activity as MainActivity).viewModel
         setupRecyclerView()
+
+        newsAdapter.setOnItemClickListener {
+            val bundle = Bundle().apply {
+                putSerializable("article", it)
+            }
+            findNavController().navigate(
+                R.id.action_nav_news_to_viewArticleFragment,bundle)
+        }
 
         viewModel.breakingNews.observe(viewLifecycleOwner, Observer { response ->
             when(response){
