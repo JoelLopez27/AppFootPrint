@@ -13,7 +13,7 @@ interface NewsAPI {
 
     suspend fun getBreakingNews(
         @Query("q")
-        selectedTopic: String = "medio-ambiente",
+        selectedTopic: String = "calentamiento+global",
         @Query("language")
         selectedLanguage: String = "es",
         @Query("sortBy")
@@ -23,5 +23,4 @@ interface NewsAPI {
         @Query("apiKey")
         apiKey: String = API_KEY
     ): Response<NewsResponse>
- //Hola
 }
