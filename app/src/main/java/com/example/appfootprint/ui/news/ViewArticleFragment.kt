@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.example.appfootprint.MainActivity
 import com.example.appfootprint.databinding.FragmentViewArticleBinding
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_view_article.*
 
 
@@ -34,6 +35,11 @@ class ViewArticleFragment : Fragment() {
         webView.apply {
             webViewClient = WebViewClient()
             loadUrl(article.url)
+        }
+
+        fab.setOnClickListener {
+            viewModel.saveArticle(article)
+            Snackbar.make(view, "Noticia Guardada", Snackbar.LENGTH_SHORT).show()
         }
     }
 
