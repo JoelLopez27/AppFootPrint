@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.appfootprint.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_recollect"
+        android:name="com.example.appfootprint.ui.recollect.RecollectFragment"
+        android:label="@string/menu_recollect"
+        tools:layout="@layout/fragment_recollect" />
+
+    <fragment
+        android:id="@+id/nav_footprint"
+        android:name="com.example.appfootprint.ui.footprint.FootprintFragment"
+        android:label="@string/menu_footprint"
+        tools:layout="@layout/fragment_footprint" />
+
+    <fragment
+        android:id="@+id/nav_news"
+        android:name="com.example.appfootprint.ui.news.BreakingNewsFragment"
+        android:label="@string/menu_news"
+        tools:layout="@layout/fragment_breaking_news" >
+        <action
+            android:id="@+id/action_nav_news_to_viewArticleFragment"
+            app:destination="@id/viewArticleFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_savednews"
+        android:name="com.example.appfootprint.ui.savednews.savedNewsFragment"
+        android:label="@string/menu_footprint"
+        tools:layout="@layout/fragment_saved_news" />
+
+    <fragment
+        android:id="@+id/viewArticleFragment"
+        android:name="com.example.appfootprint.ui.news.ViewArticleFragment"
+        android:label="fragment_view_article"
+        tools:layout="@layout/fragment_view_article" />
+    <fragment
+        android:id="@+id/savedNewsFragment"
+        android:name="com.example.appfootprint.ui.savednews.savedNewsFragment"
+        android:label="fragment_saved_news"
+        tools:layout="@layout/fragment_saved_news" />
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.example.appfootprint.MainActivity"
+        android:label="app_bar_main"
+        tools:layout="@layout/app_bar_main" />
+</navigation>

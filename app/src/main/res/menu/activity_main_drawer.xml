@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home"
+            android:title="@string/menu_home" />
+        <item
+            android:id="@+id/nav_recollect"
+            android:icon="@drawable/ic_restore_from_trash"
+            android:title="@string/recollection_personal" />
+        <item
+            android:id="@+id/nav_footprint"
+            android:icon="@drawable/ic_transportation"
+            android:title="@string/footprint" />
+        <item
+            android:id="@+id/nav_news"
+            android:icon="@drawable/ic_news"
+            android:title="@string/news_environment" />
+
+        <item
+            android:id="@+id/nav_savednews"
+            android:icon="@drawable/ic_save"
+            android:title="@string/noticias_guardadas" />
+    </group>
+
+    <item android:title="">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:title="Configuración"
+                    android:icon="@drawable/ic_settings"
+                    android:id="@+id/settings">
+                </item>
+                <item
+                    android:title="Ayuda"
+                    android:icon="@drawable/ic_support"
+                    android:id="@+id/support">
+                </item>
+
+            </group>
+
+        </menu>
+
+    </item>
+</menu>
