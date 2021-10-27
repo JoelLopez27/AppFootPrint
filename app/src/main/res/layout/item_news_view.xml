@@ -10,45 +10,46 @@
     app:cardElevation="3dp"
     android:layout_margin="15dp"
     android:foreground="?selectableItemBackground"
-    android:clickable="true">
-    
+    android:clickable="true"
+    android:focusable="true">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-    <ImageView
-        android:id="@+id/ivImage"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:scaleType="centerCrop">
-    </ImageView>
+        <ImageView
+            android:id="@+id/ivImage"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:scaleType="centerCrop">
+        </ImageView>
 
-    <TextView
-        android:id="@+id/tvTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Ejemplo de Titulo de Noticia"
-        android:textStyle="bold"
-        android:maxLines="2"
-        android:textColor="@color/black"
-        android:fontFamily="@font/nunito_regular"
-        android:textSize="18sp"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="10dp">
-    </TextView>
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ejemplo de Titulo de Noticia"
+            android:textStyle="bold"
+            android:maxLines="3"
+            android:textColor="@color/black"
+            android:fontFamily="@font/nunito_regular"
+            android:textSize="15sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="10dp">
+        </TextView>
 
-     <TextView
-         android:id="@+id/tvDescription"
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:maxLines="3"
-         android:text="Descripcion de la noticia,ejemplo,  ejemplo,  ejemplo,  ejemplo,  ejemplo,  ejemplo,  ejemplo,  ejemplo"
-         android:layout_marginStart="5dp"
-         android:layout_marginEnd="10dp"
-         android:layout_marginBottom="10dp"
-         android:layout_marginTop="5dp">
-     </TextView>
+        <TextView
+            android:id="@+id/tvDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="3"
+            android:text="Descripcion de la noticia,ejemplo,  ejemplo,  ejemplo,  ejemplo,  ejemplo,  ejemplo,  ejemplo,  ejemplo"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="5dp">
+        </TextView>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
