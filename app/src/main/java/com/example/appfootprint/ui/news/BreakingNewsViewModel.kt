@@ -17,7 +17,7 @@ class BreakingNewsViewModel(
     var breakingNewsPage = 1
 
     init {
-            getBreakingNews("medio-ambiente", "es", "publishedAt")
+            getBreakingNews("calentamiento+global", "es", "publishedAt")
     }
 
     fun getBreakingNews(selectedTopic: String, selectedLanguage: String, comeFisrt: String) =
