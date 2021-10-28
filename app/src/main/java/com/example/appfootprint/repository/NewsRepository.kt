@@ -9,7 +9,7 @@ class NewsRepository(
     val db: ArticleDatabase
 ) {
     suspend fun getBreakingNews(selectedTopic: String, selectedLanguage: String, comeFisrt: String,
-                                pageNumber: Int) = RetrofitInstance.api.getBreakingNews(selectedTopic, selectedLanguage, comeFisrt, pageNumber)
+                                pageNumber: Int, numNews: Int) = RetrofitInstance.api.getBreakingNews(selectedTopic, selectedLanguage, comeFisrt, pageNumber, numNews)
 
     suspend fun upsert(article: Article) = db.getArticleDao().upsert(article)
 
