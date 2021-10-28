@@ -2,6 +2,8 @@ package com.example.appfootprint
 
 import android.os.Bundle
 import android.view.Menu
+import android.view.View
+import android.widget.Toast
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
@@ -11,12 +13,18 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.appfootprint.databinding.ActivityMainBinding
 import com.example.appfootprint.db.ArticleDatabase
 import com.example.appfootprint.repository.NewsRepository
+import com.example.appfootprint.ui.home.HomeFragment
 import com.example.appfootprint.ui.news.BreakingNewsViewModel
 import com.example.appfootprint.ui.news.BreakingNewsViewModelProviderFactory
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.content_main.*
+import kotlinx.android.synthetic.main.fragment_breaking_news.*
+import kotlinx.android.synthetic.main.fragment_home.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -45,6 +53,18 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
+    /*   mBinding.appBarMain.fab.setOnClickListener {
+            val homeFragment = HomeFragment()
+            val fragment : Fragment? =
+                supportFragmentManager.findFragmentByTag(HomeFragment::class.java.simpleName)
+            if(fragment !is HomeFragment){
+                supportFragmentManager.beginTransaction()
+                    .add(R.id.nav_host_fragment_content_main, homeFragment, HomeFragment::class.java.simpleName)
+                    .commit()
+            }
+           homeContainer.visibility = View.GONE
+        } */
+
     }
 
 
@@ -57,4 +77,5 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
+
 }

@@ -15,6 +15,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.appfootprint.MainActivity
 import com.example.appfootprint.R
 import com.example.appfootprint.adapters.NewsAdapter
+import com.example.appfootprint.databinding.FragmentBreakingNewsBinding
+import com.example.appfootprint.databinding.FragmentSavedNewsBinding
 import com.example.appfootprint.util.Resource
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.fragment_breaking_news.*
@@ -23,13 +25,16 @@ class BreakingNewsFragment : Fragment() {
 
     lateinit var viewModel: BreakingNewsViewModel
     lateinit var newsAdapter: NewsAdapter
+    private lateinit var mBinding: FragmentBreakingNewsBinding
 
     val TAG = "BreakingNewsFragment"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_breaking_news, container, false) }
+        mBinding = FragmentBreakingNewsBinding.inflate(inflater, container, false)
+        return mBinding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -80,5 +85,6 @@ class BreakingNewsFragment : Fragment() {
             layoutManager = LinearLayoutManager(activity)
         }
     }
+
 
 }

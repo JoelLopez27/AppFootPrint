@@ -41,21 +41,6 @@
         android:id="@+id/nav_savednews"
         android:name="com.example.appfootprint.ui.savednews.savedNewsFragment"
         android:label="@string/menu_footprint"
-        tools:layout="@layout/fragment_saved_news" />
-
-    <fragment
-        android:id="@+id/viewArticleFragment"
-        android:name="com.example.appfootprint.ui.news.ViewArticleFragment"
-        android:label="fragment_view_article"
-        tools:layout="@layout/fragment_view_article" >
-        <argument
-            android:name="article"
-            app:argType="com.example.appfootprint.models.Article" />
-    </fragment>
-    <fragment
-        android:id="@+id/savedNewsFragment"
-        android:name="com.example.appfootprint.ui.savednews.savedNewsFragment"
-        android:label="fragment_saved_news"
         tools:layout="@layout/fragment_saved_news">
 
         <action
@@ -67,4 +52,15 @@
             app:popExitAnim="@anim/slide_out_right"/>
 
     </fragment>
+
+    <fragment
+        android:id="@+id/viewArticleFragment"
+        android:name="com.example.appfootprint.ui.news.ViewArticleFragment"
+        android:label="fragment_view_article"
+        tools:layout="@layout/fragment_view_article" >
+        <argument
+            android:name="article"
+            app:argType="com.example.appfootprint.models.Article" />
+    </fragment>
+
 </navigation>
