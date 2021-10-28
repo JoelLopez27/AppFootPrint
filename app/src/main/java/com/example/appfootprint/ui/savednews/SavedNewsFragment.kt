@@ -55,7 +55,7 @@ class savedNewsFragment : Fragment() {
 
         })
 
-        val itemTouchHlperCallback = object : ItemTouchHelper.SimpleCallback(
+        val itemTouchHelperCallback = object : ItemTouchHelper.SimpleCallback(
             ItemTouchHelper.UP or ItemTouchHelper.DOWN,
             ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
         ){
@@ -74,13 +74,14 @@ class savedNewsFragment : Fragment() {
                 Snackbar.make(view, "Noticia Eliminada", Snackbar.LENGTH_SHORT).apply {
                     setAction("Undo"){
                         viewModel.saveArticle(article)
-                    }.show()
+                    }
+                    show()
                 }
             }
 
         }
 
-        ItemTouchHelper(itemTouchHlperCallback).apply {
+        ItemTouchHelper(itemTouchHelperCallback).apply {
             attachToRecyclerView(rvsavedNews)
         }
     }
