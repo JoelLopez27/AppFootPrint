@@ -1,5 +1,6 @@
 package com.example.appfootprint
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.View
@@ -21,7 +22,9 @@ import com.example.appfootprint.repository.NewsRepository
 import com.example.appfootprint.ui.home.HomeFragment
 import com.example.appfootprint.ui.news.BreakingNewsViewModel
 import com.example.appfootprint.ui.news.BreakingNewsViewModelProviderFactory
+import com.example.appfootprint.ui.recollect.RecollectFragment
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.content_main.*
 import kotlinx.android.synthetic.main.fragment_breaking_news.*
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -63,8 +66,24 @@ class MainActivity : AppCompatActivity() {
                     .commit()
             }
            homeContainer.visibility = View.GONE
-        } */
+        }
+     */
 
+        mBinding.appBarMain.fab.setOnClickListener { LaunchRecollectFragment() }
+
+    }
+
+    private fun LaunchRecollectFragment() {
+        val recollectFragment = RecollectFragment()
+        val fragment : Fragment? =
+
+        supportFragmentManager.findFragmentByTag(RecollectFragment::class.java.simpleName)
+
+        if(fragment !is RecollectFragment){
+            supportFragmentManager.beginTransaction()
+                .add(R.id.nav_host_fragment_content_main, recollectFragment, RecollectFragment::class.java.simpleName)
+                .commit()
+        }
     }
 
 
