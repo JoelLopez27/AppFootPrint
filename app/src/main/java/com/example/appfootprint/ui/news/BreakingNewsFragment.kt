@@ -33,6 +33,7 @@ class BreakingNewsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
         mBinding = FragmentBreakingNewsBinding.inflate(inflater, container, false)
+
         return mBinding.root
     }
 

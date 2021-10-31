@@ -27,7 +27,7 @@
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_home"
+        app:srcCompat="@drawable/ic_add"
         app:itemIconTint="@color/white"
         android:contentDescription="@string/calcular_huella_de_carbono"
         app:layout_anchor="@id/toolbar"/>

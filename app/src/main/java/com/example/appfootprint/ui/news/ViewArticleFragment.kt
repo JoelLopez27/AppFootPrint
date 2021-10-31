@@ -10,6 +10,8 @@ import androidx.navigation.fragment.navArgs
 import com.example.appfootprint.MainActivity
 import com.example.appfootprint.databinding.FragmentViewArticleBinding
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.app_bar_main.view.*
 import kotlinx.android.synthetic.main.fragment_view_article.*
 
 

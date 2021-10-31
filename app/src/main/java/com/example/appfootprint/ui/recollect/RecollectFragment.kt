@@ -13,32 +13,16 @@ import com.example.appfootprint.databinding.FragmentRecollectBinding
 class RecollectFragment : Fragment() {
 
     private lateinit var recollectViewModel: RecollectViewModel
-    private var _binding: FragmentRecollectBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    private lateinit var mBinding: FragmentRecollectBinding
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        recollectViewModel =
-            ViewModelProvider(this).get(RecollectViewModel::class.java)
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?): View? {
+        recollectViewModel = ViewModelProvider(this).get(RecollectViewModel::class.java)
 
-        _binding = FragmentRecollectBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        mBinding = FragmentRecollectBinding.inflate(inflater, container, false)
+        return mBinding.root
 
-        val textView: TextView = binding.textGallery
-        recollectViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
-        return root
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
 }
