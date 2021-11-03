@@ -21,7 +21,15 @@
         android:id="@+id/nav_footprint"
         android:name="com.example.appfootprint.ui.footprint.FootprintFragment"
         android:label="@string/menu_footprint"
-        tools:layout="@layout/fragment_footprint" />
+        tools:layout="@layout/fragment_footprint" >
+        <action
+            android:id="@+id/action_nav_footprint_to_footprintCarTravelFragment"
+            app:destination="@id/footprintCarTravelFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
 
     <fragment
         android:id="@+id/nav_news"
@@ -62,5 +70,10 @@
             android:name="article"
             app:argType="com.example.appfootprint.models.Article" />
     </fragment>
+    <fragment
+        android:id="@+id/footprintCarTravelFragment"
+        android:name="com.example.appfootprint.ui.footprint.calfootprint.FootprintCarTravelFragment"
+        android:label="fragment_footprint_car_travel"
+        tools:layout="@layout/fragment_footprint_car_travel" />
 
 </navigation>
