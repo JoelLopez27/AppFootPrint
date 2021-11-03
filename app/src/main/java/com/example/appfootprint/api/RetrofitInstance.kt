@@ -2,6 +2,7 @@ package com.example.appfootprint.api
 
 import com.example.appfootprint.util.Constants.Companion.BASE_URL
 import okhttp3.OkHttpClient
+import okhttp3.internal.addHeaderLenient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
