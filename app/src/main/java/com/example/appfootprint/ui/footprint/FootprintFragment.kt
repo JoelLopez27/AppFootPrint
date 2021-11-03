@@ -8,8 +8,12 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import com.example.appfootprint.R
 import com.example.appfootprint.databinding.FragmentBreakingNewsBinding
 import com.example.appfootprint.databinding.FragmentFootprintBinding
+import com.example.appfootprint.ui.footprint.calfootprint.FootprintCarTravelFragment
 
 class FootprintFragment : Fragment() {
 
@@ -26,6 +30,11 @@ class FootprintFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+       mBinding.button.setOnClickListener {
+            it.findNavController().navigate(
+                R.id.action_nav_footprint_to_footprintCarTravelFragment)
+        }
     }
 
 }
