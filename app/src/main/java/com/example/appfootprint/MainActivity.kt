@@ -23,6 +23,7 @@ import com.example.appfootprint.ui.home.HomeFragment
 import com.example.appfootprint.ui.news.BreakingNewsViewModel
 import com.example.appfootprint.ui.news.BreakingNewsViewModelProviderFactory
 import com.example.appfootprint.ui.recollect.RecollectFragment
+import com.example.appfootprint.ui.recollect.RecollectViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.content_main.*
@@ -34,6 +35,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var mBinding: ActivityMainBinding
     lateinit var viewModel: BreakingNewsViewModel
+    lateinit var viewModel2: RecollectViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
