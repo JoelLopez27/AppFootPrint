@@ -19,6 +19,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.appfootprint.databinding.ActivityMainBinding
 import com.example.appfootprint.db.ArticleDatabase
 import com.example.appfootprint.repository.NewsRepository
+import com.example.appfootprint.repository.ResultRepository
+import com.example.appfootprint.ui.footprint.calfootprint.ResultViewModel
+import com.example.appfootprint.ui.footprint.calfootprint.ViewModelProviderFactory
 import com.example.appfootprint.ui.home.HomeFragment
 import com.example.appfootprint.ui.news.BreakingNewsViewModel
 import com.example.appfootprint.ui.news.BreakingNewsViewModelProviderFactory
@@ -36,11 +39,16 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mBinding: ActivityMainBinding
     lateinit var viewModel: BreakingNewsViewModel
     lateinit var viewModel2: RecollectViewModel
+    lateinit var viewModel3: ResultViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
+
+        val resultRepository = ResultRepository()
+        val resultViewModelProviderFactory = ViewModelProviderFactory(resultRepository)
+        viewModel3 = ViewModelProvider(this, resultViewModelProviderFactory).get(ResultViewModel::class.java)
 
         val newsRepository = NewsRepository(ArticleDatabase(this))
         val viewModelProviderFactory = BreakingNewsViewModelProviderFactory(newsRepository)
@@ -58,18 +66,6 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-    /*   mBinding.appBarMain.fab.setOnClickListener {
-            val homeFragment = HomeFragment()
-            val fragment : Fragment? =
-                supportFragmentManager.findFragmentByTag(HomeFragment::class.java.simpleName)
-            if(fragment !is HomeFragment){
-                supportFragmentManager.beginTransaction()
-                    .add(R.id.nav_host_fragment_content_main, homeFragment, HomeFragment::class.java.simpleName)
-                    .commit()
-            }
-           homeContainer.visibility = View.GONE
-        }
-     */
 
         mBinding.appBarMain.fab.setOnClickListener { LaunchRecollectFragment() }
 
