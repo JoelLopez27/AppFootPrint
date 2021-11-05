@@ -74,6 +74,29 @@
         android:id="@+id/footprintCarTravelFragment"
         android:name="com.example.appfootprint.ui.footprint.calfootprint.FootprintCarTravelFragment"
         android:label="fragment_footprint_car_travel"
-        tools:layout="@layout/fragment_footprint_car_travel" />
+        tools:layout="@layout/fragment_footprint_car_travel" >
+        <action
+            android:id="@+id/action_footprintCarTravelFragment_to_fragmentResult"
+            app:destination="@id/fragmentResult" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentResult"
+        android:name="com.example.appfootprint.ui.footprint.calfootprint.FragmentResult"
+        android:label="FragmentResult" >
+        <action
+            android:id="@+id/action_fragmentResult_to_nav_footprint"
+            app:destination="@id/nav_footprint"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_fragmentResult_to_footprintCarTravelFragment"
+            app:destination="@id/footprintCarTravelFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
 
 </navigation>
