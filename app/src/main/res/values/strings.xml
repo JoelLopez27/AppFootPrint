@@ -7,6 +7,32 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
+    <string-array name="type_cars">
+        <item>-Seleccionar Tipo de Carro-</item>
+        <item>SmallDieselCar</item>
+        <item>MediumDieselCar</item>
+        <item>LargeDieselCar</item>
+        <item>MediumHybridCar</item>
+        <item>LargeHybridCar</item>
+        <item>MediumLPGCar</item>
+        <item>LargeLPGCar</item>
+        <item>MediumCNGCar</item>
+        <item>LargeCNGCar</item>
+        <item>SmallPetrolVan</item>
+        <item>LargePetrolVan</item>
+        <item>SmallDielselVan</item>
+        <item>MediumDielselVan</item>
+        <item>LargeDielselVan</item>
+        <item>LPGVan</item>
+        <item>CNGVan</item>
+        <item>SmallPetrolCar</item>
+        <item>MediumPetrolCar</item>
+        <item>LargePetrolCar</item>
+        <item>SmallMotorBike</item>
+        <item>MediumMotorBike</item>
+        <item>LargeMotorBike</item>
+    </string-array>
+
     <string name="menu_home">Home</string>
     <string name="recollection_personal">Recoleción Personal</string>
     <string name="footprint">Huellas de Carbono</string>
@@ -29,4 +55,5 @@ Sapien et ligula ullamcorper malesuada. Faucibus ornare suspendisse sed nisi. Ma
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="news_favorites">News Favorites</string>
     <string name="noticias_guardadas">Noticias Guardadas</string>
+    <string name="helper_required">Requerido</string>
 </resources>
