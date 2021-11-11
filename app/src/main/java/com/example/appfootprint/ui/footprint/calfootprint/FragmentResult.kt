@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.example.appfootprint.MainActivity
 import com.example.appfootprint.R
 import com.example.appfootprint.databinding.FragmentFootprintBinding
@@ -30,16 +32,15 @@ class FragmentResult : Fragment() {
 
         viewModel.resultLiveData.observe(viewLifecycleOwner){response->
             mBinding.cantKilograms.text = response.carbonEquivalent.toString() + " Kg"
-
         }
+
 
         mBinding.returnMenu.setOnClickListener {
             it.findNavController().navigate(
                 R.id.action_fragmentResult_to_nav_footprint)
         }
         mBinding.returnOptions.setOnClickListener {
-            it.findNavController().navigate(
-                R.id.action_fragmentResult_to_footprintCarTravelFragment)
+            this.findNavController().popBackStack()
         }
 
     }
