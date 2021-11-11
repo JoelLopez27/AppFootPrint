@@ -29,6 +29,41 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_nav_footprint_to_footprintFlightTravelFragment"
+            app:destination="@id/footprintFlightTravelFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_nav_footprint_to_footprintBikeTravelFragment"
+            app:destination="@id/footprintBikeTravelFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_nav_footprint_to_footprintTransitTravelFragment"
+            app:destination="@id/footprintTransitTravelFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_nav_footprint_to_footprintHydroElectricFragment"
+            app:destination="@id/footprintHydroElectricFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_nav_footprint_to_treesEquivalentFragment"
+            app:destination="@id/treesEquivalentFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
 
     <fragment
@@ -77,7 +112,11 @@
         tools:layout="@layout/fragment_footprint_car_travel" >
         <action
             android:id="@+id/action_footprintCarTravelFragment_to_fragmentResult"
-            app:destination="@id/fragmentResult" />
+            app:destination="@id/fragmentResult"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/fragmentResult"
@@ -97,6 +136,78 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_fragmentResult_to_footprintFlightTravelFragment"
+            app:destination="@id/footprintFlightTravelFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/footprintFlightTravelFragment"
+        android:name="com.example.appfootprint.ui.footprint.calfootprint.FootprintFlightTravelFragment"
+        android:label="fragment_footprint_flight_travel"
+        tools:layout="@layout/fragment_footprint_flight_travel" >
+        <action
+            android:id="@+id/action_footprintFlightTravelFragment_to_fragmentResult"
+            app:destination="@id/fragmentResult"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/footprintBikeTravelFragment"
+        android:name="com.example.appfootprint.ui.footprint.calfootprint.FootprintBikeTravelFragment"
+        android:label="FootprintBikeTravelFragment" >
+        <action
+            android:id="@+id/action_footprintBikeTravelFragment_to_fragmentResult"
+            app:destination="@id/fragmentResult"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/footprintTransitTravelFragment"
+        android:name="com.example.appfootprint.ui.footprint.calfootprint.FootprintTransitTravelFragment"
+        android:label="FootprintTransitTravelFragment" >
+        <action
+            android:id="@+id/action_footprintTransitTravelFragment_to_fragmentResult"
+            app:destination="@id/fragmentResult"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/footprintHydroElectricFragment"
+        android:name="com.example.appfootprint.ui.footprint.calfootprint.FootprintHydroElectricFragment"
+        android:label="FootprintHydroElectricFragment" >
+        <action
+            android:id="@+id/action_footprintHydroElectricFragment_to_fragmentResult"
+            app:destination="@id/fragmentResult"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/treesEquivalentFragment"
+        android:name="com.example.appfootprint.ui.footprint.calfootprint.TreesEquivalentFragment"
+        android:label="TreesEquivalentFragment" >
+        <action
+            android:id="@+id/action_treesEquivalentFragment_to_fragmentResultTrees"
+            app:destination="@id/fragmentResultTrees" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentResultTrees"
+        android:name="com.example.appfootprint.ui.footprint.calfootprint.FragmentResultTrees"
+        android:label="FragmentResultTrees" >
+        <action
+            android:id="@+id/action_fragmentResultTrees_to_nav_footprint"
+            app:destination="@id/nav_footprint" />
     </fragment>
 
 </navigation>
