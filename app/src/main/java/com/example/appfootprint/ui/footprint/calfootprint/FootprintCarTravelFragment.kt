@@ -13,7 +13,7 @@ import com.example.appfootprint.MainActivity
 import kotlinx.android.synthetic.main.fragment_footprint_car_travel.*
 import com.example.appfootprint.databinding.FragmentFootprintBinding
 import com.example.appfootprint.databinding.FragmentFootprintCarTravelBinding
-import com.google.android.material.navigation.NavigationBarView
+
 
 
 class FootprintCarTravelFragment : Fragment() {
