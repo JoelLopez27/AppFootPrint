@@ -134,6 +134,7 @@
 
                 // Cuadro 2 //
                 <LinearLayout
+                    android:id="@+id/button2"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -207,6 +208,7 @@
                 // Cuadro 3 //
 
                 <LinearLayout
+                    android:id="@+id/button3"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -271,6 +273,7 @@
                 // Cuadro 4 //
 
                 <LinearLayout
+                    android:id="@+id/button4"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -343,6 +346,7 @@
                 // Cuadro 5 //
 
                 <LinearLayout
+                    android:id="@+id/button5"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -405,141 +409,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:layout_marginLeft="7.5dp"
-                    android:layout_marginRight="15dp"
-                    android:orientation="vertical"
-                    android:gravity="center">
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:cardCornerRadius="12dp"
-                        android:elevation="0dp">
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:orientation="vertical"
-                                android:gravity="center">
-
-                                <ImageView
-                                    android:layout_width="60dp"
-                                    android:layout_height="60dp"
-                                    android:layout_marginTop="25dp"
-                                    android:src="@drawable/clean">
-                                </ImageView>
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Huella de Carbono"
-                                    android:layout_marginTop="8dp"
-                                    android:textColor="@color/black"
-                                    android:textSize="14sp"
-                                    android:fontFamily="@font/nunito_regular"
-                                    android:textStyle="bold">
-                                </TextView>
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Energías Limpias"
-                                    android:layout_marginTop="2dp"
-                                    android:textColor="@color/black"
-                                    android:textSize="12sp"
-                                    android:layout_marginBottom="5dp">
-                                </TextView>
-
-                            </LinearLayout>
-
-                        </RelativeLayout>
-
-                    </androidx.cardview.widget.CardView>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="40dp"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="7.5dp"
-                    android:orientation="vertical"
-                    android:gravity="center">
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:cardCornerRadius="12dp"
-                        android:elevation="0dp">
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:orientation="vertical"
-                                android:gravity="center">
-
-                                <ImageView
-                                    android:layout_width="60dp"
-                                    android:layout_height="60dp"
-                                    android:layout_marginTop="25dp"
-                                    android:src="@drawable/tree">
-                                </ImageView>
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Equivalencia"
-                                    android:layout_marginTop="8dp"
-                                    android:textColor="@color/black"
-                                    android:textSize="14sp"
-                                    android:fontFamily="@font/nunito_regular"
-                                    android:textStyle="bold">
-                                </TextView>
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="2dp"
-                                    android:text="Arboles Necesarios Para Crear Papel"
-                                    android:textAlignment="center"
-                                    android:textColor="@color/black"
-                                    android:textSize="12sp"
-                                    android:layout_marginBottom="5dp">
-
-                                </TextView>
-
-                            </LinearLayout>
-
-                        </RelativeLayout>
-
-                    </androidx.cardview.widget.CardView>
-
-                </LinearLayout>
-
-                <LinearLayout
+                    android:id="@+id/button6"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -569,13 +439,13 @@
                                     android:layout_width="60dp"
                                     android:layout_height="60dp"
                                     android:layout_marginTop="15dp"
-                                    android:src="@drawable/gasolina">
+                                    android:src="@drawable/tree">
                                 </ImageView>
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Transformar"
+                                    android:text="Equivalencia"
                                     android:layout_marginTop="8dp"
                                     android:textColor="@color/black"
                                     android:textSize="14sp"
@@ -587,8 +457,9 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="2dp"
-                                    android:text="Litros de Gasolina a su Equivalente en KgCO2"
+                                    android:text="Arboles Necesarios para producir Papel"
                                     android:textAlignment="center"
+                                    android:padding="2dp"
                                     android:textColor="@color/black"
                                     android:textSize="12sp">
 
@@ -603,6 +474,8 @@
                 </LinearLayout>
 
             </LinearLayout>
+
+
 
         </LinearLayout>
 
