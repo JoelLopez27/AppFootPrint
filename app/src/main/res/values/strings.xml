@@ -33,6 +33,66 @@
         <item>LargeMotorBike</item>
     </string-array>
 
+    <string-array name="type_planes">
+        <item>-Seleccionar Tipo de Vuelo-</item>
+        <item>DomesticFlight</item>
+        <item>ShortEconomyClassFlight</item>
+        <item>ShortBusinessClassFlight</item>
+        <item>LongEconomyClassFlight</item>
+        <item>LongPremiumClassFlight</item>
+        <item>LongBusinessClassFlight</item>
+        <item>LongFirstClassFlight</item>
+    </string-array>
+
+    <string-array name="type_bikes">
+        <item>-Seleccionar Tipo de Motocicleta-</item>
+        <item>SmallMotorBike</item>
+        <item>MediumMotorBike</item>
+        <item>LargeMotorBike</item>
+    </string-array>
+
+    <string-array name="type_transit">
+        <item>-Seleccionar Tipo de Transporte Publico-</item>
+        <item>Taxi</item>
+        <item>EcoBus</item>
+        <item>Coach</item>
+        <item>NationalTrain</item>
+        <item>LightRail</item>
+        <item>Subway</item>
+        <item>FerryOnFoot</item>
+        <item>FerryInCar</item>
+    </string-array>
+
+    <string-array name="location">
+        <item>-Seleccionar Pais/Continente-</item>
+        <item>USA</item>
+        <item>Canada</item>
+        <item>UK</item>
+        <item>Europe</item>
+        <item>Africa</item>
+        <item>LatinAmerica</item>
+        <item>MiddleEast</item>
+        <item>OtherCountry</item>
+    </string-array>
+
+    <string-array name="type_energy">
+        <item>-Seleccionar Tipo de Energia-</item>
+        <item>Solar</item>
+        <item>Wind</item>
+        <item>HydroElectric</item>
+        <item>Biomass</item>
+        <item>Geothermal</item>
+        <item>Tidal</item>
+        <item>OtherCleanEnergy</item>
+    </string-array>
+
+    <string-array name="unit">
+        <item>-Seleccionar Unidad de Peso</item>
+        <item>kg</item>
+        <item>lb</item>
+    </string-array>
+
+
     <string name="menu_home">Home</string>
     <string name="recollection_personal">Recoleción Personal</string>
     <string name="footprint">Huellas de Carbono</string>
