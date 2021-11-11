@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fondo1"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.footprint.calfootprint.FootprintCarTravelFragment">
 
@@ -20,7 +21,7 @@
             android:textAlignment="center"
             android:textStyle="bold"
             android:textSize="24sp"
-            android:textColor="@color/black"
+            android:textColor="#C9000000"
             android:paddingBottom="10dp">
         </TextView>
 
@@ -28,46 +29,47 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Viaje en Carro"
+            android:textColor="@color/black"
             android:textAlignment="center"
             android:textSize="16sp"
-            android:textColor="@color/black"
             android:paddingBottom="10dp">
         </TextView>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilKm"
-            app:boxCornerRadiusTopEnd="10dp"
-            app:boxCornerRadiusTopStart="10dp"
-            app:boxCornerRadiusBottomEnd="10dp"
-            app:boxCornerRadiusBottomStart="10dp"
-            android:outlineAmbientShadowColor="@color/principal"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="94dp"
             android:hint="Ingresar Distancia en KM"
+            app:boxCornerRadiusBottomEnd="30dp"
+            app:boxCornerRadiusBottomStart="30dp"
+            app:boxCornerRadiusTopEnd="30dp"
+            app:boxCornerRadiusTopStart="30dp"
             app:endIconMode="clear_text"
             app:helperText="@string/helper_required"
-            app:startIconDrawable="@drawable/medium"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+            app:startIconDrawable="@drawable/medium">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etKm"
-                android:inputType="number"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:textColor="@color/black"
+                android:textStyle="bold">
             </com.google.android.material.textfield.TextInputEditText>
 
         </com.google.android.material.textfield.TextInputLayout>
 
-
        <Spinner
            android:id="@+id/spinner"
-           style="@style/Widget.AppCompat.Spinner"
-           android:layout_marginTop="40dp"
-           android:background="@drawable/spinner_bg"
+           android:layout_marginTop="20dp"
            android:layout_width="match_parent"
-           android:layout_height="55dp"
-           android:stateListAnimator="@drawable/spinner_sla">
-
+           android:background="@drawable/spinner_rect"
+           android:layout_height="57dp"
+           android:textAlignment="center"
+           android:spinnerMode="dropdown"
+           android:entries="@array/type_cars"
+          android:stateListAnimator="@drawable/spinner_sla">
        </Spinner>
 
         <Button
@@ -79,10 +81,6 @@
             android:text="Calcular">
         </Button>
 
-
-
-
     </LinearLayout>
-
 
 </androidx.core.widget.NestedScrollView>
