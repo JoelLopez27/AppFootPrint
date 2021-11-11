@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity"
-    app:itemIconTint="@color/white">
+    tools:context=".MainActivity">
 
     <include layout="@layout/content_main" />
 
@@ -19,7 +18,7 @@
         app:itemIconTint="@color/white"
         app:menu="@menu/activity_main_drawer"
         app:hideOnScroll="true"
-        style="@style/Widget.MaterialComponents.BottomAppBar.Colored">
+        android:backgroundTint="@color/principal">
 
     </com.google.android.material.bottomappbar.BottomAppBar>
 
