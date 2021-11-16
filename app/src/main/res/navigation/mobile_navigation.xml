@@ -15,7 +15,15 @@
         android:id="@+id/nav_recollect"
         android:name="com.example.appfootprint.ui.recollect.RecollectFragment"
         android:label="@string/menu_recollect"
-        tools:layout="@layout/fragment_recollect" />
+        tools:layout="@layout/fragment_recollect" >
+        <action
+            android:id="@+id/action_nav_recollect_to_addRecollectFragment"
+            app:destination="@id/addRecollectFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
 
     <fragment
         android:id="@+id/nav_footprint"
@@ -199,7 +207,11 @@
         android:label="TreesEquivalentFragment" >
         <action
             android:id="@+id/action_treesEquivalentFragment_to_fragmentResultTrees"
-            app:destination="@id/fragmentResultTrees" />
+            app:destination="@id/fragmentResultTrees"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/fragmentResultTrees"
@@ -207,7 +219,29 @@
         android:label="FragmentResultTrees" >
         <action
             android:id="@+id/action_fragmentResultTrees_to_nav_footprint"
-            app:destination="@id/nav_footprint" />
+            app:destination="@id/nav_footprint"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
+    <fragment
+        android:id="@+id/addRecollectFragment"
+        android:name="com.example.appfootprint.ui.recollect.AddRecollectFragment"
+        android:label="fragment_add_recollect"
+        tools:layout="@layout/fragment_add_recollect" >
+        <action
+            android:id="@+id/action_addRecollectFragment_to_nav_recollect"
+            app:destination="@id/nav_recollect"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.example.appfootprint.MainActivity"
+        android:label="app_bar_main"
+        tools:layout="@layout/app_bar_main" />
 
 </navigation>
