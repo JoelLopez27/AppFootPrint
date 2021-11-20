@@ -1,7 +1,9 @@
 package com.example.appfootprint
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
+import android.view.View
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -12,7 +14,10 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.appfootprint.adapters.RecollectAdapter
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.appfootprint.databinding.ActivityMainBinding
 import com.example.appfootprint.db.ArticleDatabase
 import com.example.appfootprint.db.RecollectDatabase
@@ -21,28 +26,44 @@ import com.example.appfootprint.repository.RecollectRepository
 import com.example.appfootprint.repository.ResultRepository
 import com.example.appfootprint.ui.footprint.calfootprint.ResultViewModel
 import com.example.appfootprint.ui.footprint.calfootprint.ViewModelProviderFactory
-import com.example.appfootprint.ui.home.HomeFragment
 import com.example.appfootprint.ui.news.BreakingNewsViewModel
 import com.example.appfootprint.ui.news.BreakingNewsViewModelProviderFactory
 import com.example.appfootprint.ui.recollect.AddRecollectViewModel
 import com.example.appfootprint.ui.recollect.RecollectFragment
-import com.example.appfootprint.ui.recollect.RecollectViewModel
 import com.example.appfootprint.ui.recollect.RecollectViewModelProviderFactory
+import com.firebase.ui.auth.AuthUI
+import com.firebase.ui.auth.IdpResponse
+import com.google.firebase.auth.FirebaseAuth
+import kotlinx.android.synthetic.main.nav_header_main.view.*
+import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var mBinding: ActivityMainBinding
+    private lateinit var mAuthListener: FirebaseAuth.AuthStateListener
+    private var mFirebaseAuth: FirebaseAuth? = null
+    private val RC_SIGN_IN =21
     lateinit var viewModel: BreakingNewsViewModel
     lateinit var viewModel2: AddRecollectViewModel
     lateinit var viewModel3: ResultViewModel
-    lateinit var recollectAdapter: RecollectAdapter
+
+    private val authResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+            if (it.resultCode == RESULT_OK){
+                Toast.makeText(this, "Bienvenido...", Toast.LENGTH_SHORT).show()
+            }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        Thread.sleep(2000)
+        setTheme(R.style.Theme_AppFootPrint)
+
         mBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
+
 
         val resultRepository = ResultRepository()
         val resultViewModelProviderFactory = ViewModelProviderFactory(resultRepository)
@@ -63,8 +84,20 @@ class MainActivity : AppCompatActivity() {
         val navView: NavigationView = mBinding.navView
         val navController = findNavController(R.id.nav_host_fragment_content_main)
 
+        val headerView : View = navView.getHeaderView(0)
+
+        headerView.nameUser.text = FirebaseAuth.getInstance().currentUser?.displayName
+
+        headerView.emailUser.text = FirebaseAuth.getInstance().currentUser?.email
+
+        Glide.with(this)
+            .load(FirebaseAuth.getInstance().currentUser?.photoUrl)
+            .diskCacheStrategy(DiskCacheStrategy.ALL)
+            .centerCrop()
+            .into(headerView.imageView)
+
         appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.nav_home, R.id.nav_recollect, R.id.nav_footprint, R.id.nav_news, R.id.nav_savednews), drawerLayout
+            setOf(R.id.nav_home, R.id.nav_recollect, R.id.nav_footprint, R.id.nav_news, R.id.nav_savednews, R.id.nav_profile), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
@@ -72,6 +105,28 @@ class MainActivity : AppCompatActivity() {
 
             mBinding.appBarMain.fab.setOnClickListener {
             LaunchRecollectFragment()
+        }
+
+       setupAuth()
+
+    }
+
+    private fun setupAuth() {
+        mFirebaseAuth = FirebaseAuth.getInstance()
+        mAuthListener = FirebaseAuth.AuthStateListener {
+            val user = it.currentUser
+            if (user == null) {
+                authResult.launch(
+                    AuthUI.getInstance().createSignInIntentBuilder()
+                        .setIsSmartLockEnabled(false)
+                        .setAvailableProviders(
+                            Arrays.asList(
+                                AuthUI.IdpConfig.EmailBuilder().build(),
+                                AuthUI.IdpConfig.GoogleBuilder().build())
+                        )
+                        .build()
+                )
+            }
         }
     }
 
@@ -99,5 +154,23 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
+
+    override fun onResume() {
+        super.onResume()
+        mFirebaseAuth?.addAuthStateListener (mAuthListener)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        mFirebaseAuth?.removeAuthStateListener (mAuthListener)
+    }
+
+   /* override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == RC_SIGN_IN)
+            if (resultCode == RESULT_OK){
+                Toast.makeText(this, "Bienvenido...", Toast.LENGTH_SHORT).show()
+            }
+    }  */
 
 }
