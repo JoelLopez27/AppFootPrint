@@ -12,6 +12,13 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
+        android:id="@+id/nav_profile"
+        android:name="com.example.appfootprint.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+
+
+    <fragment
         android:id="@+id/nav_recollect"
         android:name="com.example.appfootprint.ui.recollect.RecollectFragment"
         android:label="@string/menu_recollect"
