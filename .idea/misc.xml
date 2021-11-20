@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/drawable/bmi_circle_background.xml" value="0.22447916666666667" />
         <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/drawable/ic_menu.xml" value="0.13240740740740742" />
+        <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/drawable/ic_menu_2.xml" value="0.22447916666666667" />
         <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/drawable/ic_menu_blanco.xml" value="0.22447916666666667" />
         <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/drawable/menu_back.xml" value="0.1" />
         <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/drawable/menu_back_state.xml" value="0.1" />
@@ -15,12 +16,13 @@
         <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/drawable/spinner_options.xml" value="0.1" />
         <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/drawable/spinner_rect.xml" value="0.1" />
         <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/drawable/spinner_sla.xml" value="0.1" />
+        <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/drawable/splashscreen.xml" value="0.1638888888888889" />
         <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/layout/activity_splash_screen.xml" value="0.25" />
         <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/layout/app_bar_main.xml" value="0.16" />
         <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/layout/breaking_news_fragment.xml" value="0.1" />
         <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/layout/content_main.xml" value="0.1" />
-        <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/layout/fragment_add_recollect.xml" value="0.37751004016064255" />
+        <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/layout/fragment_add_recollect.xml" value="0.33" />
         <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/layout/fragment_breaking_news.xml" value="0.1" />
         <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/layout/fragment_footprint.xml" value="0.25" />
         <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/layout/fragment_footprint_bike_travel.xml" value="0.20833333333333334" />
@@ -30,8 +32,9 @@
         <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/layout/fragment_footprint_hydro_electric.xml" value="0.20833333333333334" />
         <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/layout/fragment_footprint_transform_fuel.xml" value="0.25" />
         <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/layout/fragment_footprint_transit_travel.xml" value="0.20833333333333334" />
-        <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/layout/fragment_home.xml" value="0.20833333333333334" />
-        <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/layout/fragment_recollect.xml" value="0.33" />
+        <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/layout/fragment_home.xml" value="0.18" />
+        <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/layout/fragment_profile.xml" value="0.16576086956521738" />
+        <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/layout/fragment_recollect.xml" value="0.22" />
         <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/layout/fragment_result.xml" value="0.2" />
         <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/layout/fragment_result_trees.xml" value="0.20833333333333334" />
         <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/layout/fragment_resultwert.xml" value="0.2" />
@@ -40,8 +43,9 @@
         <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/layout/fragment_view_article.xml" value="0.1" />
         <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/layout/item_cal_options_view.xml" value="0.20833333333333334" />
         <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/layout/item_news_view.xml" value="0.18" />
+        <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/layout/item_recollect_home.xml" value="0.33" />
         <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/layout/list_recollection.xml" value="0.4519230769230769" />
-        <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/layout/nav_header_main.xml" value="0.1" />
+        <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/layout/nav_header_main.xml" value="0.13" />
         <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/menu/activity_main_drawer.xml" value="0.20833333333333334" />
         <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/menu/main.xml" value="0.20833333333333334" />
       </map>
