@@ -1,72 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fondo1"
+    android:layout_marginBottom="45dp"
     tools:context=".ui.recollect.AddRecollectFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
         android:orientation="vertical"
         android:padding="16dp"
-        android:layout_gravity="center_vertical">
+        app:layout_constraintTop_toTopOf="parent">
 
         <!-- TODO: Update blank fragment layout -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito_regular"
             android:gravity="center_horizontal"
             android:text="Recolección Nueva"
-            android:textSize="32sp"
             android:textColor="@color/black"
-            android:fontFamily="@font/nunito_regular"
+            android:textSize="32sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Calcula, Guarda y/o Publica tus resultados "
-        android:textColor="@color/black"
-        android:textAlignment="center"
-        android:textSize="16sp"
-        android:paddingBottom="10dp">
-    </TextView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:text="Calcula, Guarda y/o Publica tus resultados "
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="16sp">
+
+        </TextView>
 
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_marginTop="20dp"
-        android:layout_width="match_parent"
-        android:background="@drawable/spinner_rect"
-        android:layout_height="57dp"
-        android:textAlignment="center"
-        android:spinnerMode="dropdown"
-        android:entries="@array/type_Material"
-        android:stateListAnimator="@drawable/spinner_sla">
-    </Spinner>
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="57dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/spinner_rect"
+            android:entries="@array/type_Material"
+            android:spinnerMode="dropdown"
+            android:stateListAnimator="@drawable/spinner_sla"
+            android:textAlignment="center">
+
+        </Spinner>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilMaterial"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="94dp"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="25dp"
+            android:gravity="center_horizontal"
             android:hint="Ingresar Cantidad de Material (Kg)"
+            android:textColorHint="@color/black"
             app:boxCornerRadiusBottomEnd="30dp"
             app:boxCornerRadiusBottomStart="30dp"
             app:boxCornerRadiusTopEnd="30dp"
             app:boxCornerRadiusTopStart="30dp"
             app:endIconMode="clear_text"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center_horizontal"
-            android:textColorHint="@color/black"
             app:helperText="@string/helper_required"
             app:startIconDrawable="@drawable/recycle">
 
@@ -84,24 +94,23 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:layout_gravity="end"
+            android:layout_marginTop="16dp"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/tvselectFecha"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="32dp"
                 android:gravity="center"
                 android:text="Fecha Seleccionada:"
                 android:textSize="15sp"
-                android:layout_marginTop="2dp"
-                android:visibility="gone"
-                android:layout_marginEnd="32dp"
                 android:textStyle="bold"
+                android:visibility="gone"
                 app:layout_constraintBottom_toTopOf="@id/tvFecha"
-                app:layout_constraintEnd_toStartOf="@id/botonDate"
-                >
+                app:layout_constraintEnd_toStartOf="@id/botonDate">
 
             </TextView>
 
@@ -109,9 +118,9 @@
                 android:id="@+id/tvFecha"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
                 android:gravity="center"
                 android:textSize="18sp"
-                android:layout_marginEnd="32dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/botonDate"
                 app:layout_constraintTop_toTopOf="parent">
@@ -135,17 +144,159 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/publicarFeed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Publicar Recolección en el Feed"
+            android:textStyle="bold"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/feedContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilNombre"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="94dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="25dp"
+                android:gravity="center_horizontal"
+                android:hint="Ingresar Nombre"
+                android:textColorHint="@color/black"
+                android:visibility="visible"
+                app:boxCornerRadiusBottomEnd="30dp"
+                app:boxCornerRadiusBottomStart="30dp"
+                app:boxCornerRadiusTopEnd="30dp"
+                app:boxCornerRadiusTopStart="30dp"
+                app:endIconMode="clear_text"
+                app:helperText="@string/helper_required"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:startIconDrawable="@drawable/recycle">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etNombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/black">
+
+                </com.google.android.material.textfield.TextInputEditText>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilTitulo"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="94dp"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal"
+                android:hint="Ingresar un Titulo a tu Publicación"
+                android:textColorHint="@color/black"
+                android:visibility="visible"
+                app:boxCornerRadiusBottomEnd="30dp"
+                app:boxCornerRadiusBottomStart="30dp"
+
+                app:boxCornerRadiusTopEnd="30dp"
+                app:boxCornerRadiusTopStart="30dp"
+                app:endIconMode="clear_text"
+                app:helperText="Opcional"
+                app:layout_constraintTop_toBottomOf="@+id/tilNombre"
+                app:startIconDrawable="@drawable/recycle">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etTitulo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:textColor="@color/black">
+
+                </com.google.android.material.textfield.TextInputEditText>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/selectImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="Seleccionar Imagen:"
+                app:layout_constraintTop_toBottomOf="@id/tilTitulo"
+                android:textStyle="bold">
+            </TextView>
+
+            <ImageView
+                android:id="@+id/imgPhoto"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintDimensionRatio="H, 4:3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/selectImage">
+
+            </ImageView>
+
+            <ImageButton
+                android:id="@+id/btnSelect"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ic_image_search"
+                android:background="?attr/selectableItemBackground"
+                app:layout_constraintDimensionRatio="H, 4:3"
+                app:layout_constraintTop_toBottomOf="@id/selectImage">
+            </ImageButton>
+
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                android:layout_width="0dp"
+                android:layout_marginTop="10dp"
+                android:visibility="invisible"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btnSelect"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal">
+            </ProgressBar>
+
+            <TextView
+                android:id="@+id/progressPorcentage"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@+id/progress_bar"
+                app:layout_constraintTop_toBottomOf="@id/progress_bar"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_marginEnd="8dp"
+                android:text="100%">
+
+            </TextView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
         <Button
             android:id="@+id/boton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="40dp"
-            android:text="Calcular Y Publicar"
-            app:cornerRadius="30dp"></Button>
-
-
+            android:layout_marginBottom="16dp"
+            android:text="Calcular y/o Publicar"
+            android:textAllCaps="false"
+            app:cornerRadius="30dp">
+        </Button>
 
     </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.core.widget.NestedScrollView>
