@@ -30,4 +30,5 @@
         app:itemIconPadding="30dp"
         app:itemBackground="@drawable/menu_item_padding"
         android:fontFamily="@font/nunito_semibold"/>
+
 </androidx.drawerlayout.widget.DrawerLayout>
