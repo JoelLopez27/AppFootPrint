@@ -15,7 +15,6 @@
         android:id="@+id/toolbar"
         android:layout_gravity= "bottom"
         app:navigationIcon="@drawable/ic_menu_blanco"
-        app:itemIconTint="@color/white"
         app:menu="@menu/activity_main_drawer"
         app:hideOnScroll="true"
         android:backgroundTint="@color/principal">
