@@ -27,13 +27,13 @@
             android:title="@string/noticias_guardadas" />
     </group>
 
-    <item android:title="">
+    <item android:title="Ajustes">
         <menu>
             <group android:checkableBehavior="single">
                 <item
-                    android:title="Configuración"
-                    android:icon="@drawable/ic_settings"
-                    android:id="@+id/settings">
+                    android:title="Cuenta"
+                    android:icon="@drawable/ic_person"
+                    android:id="@+id/nav_profile">
                 </item>
                 <item
                     android:title="Ayuda"
