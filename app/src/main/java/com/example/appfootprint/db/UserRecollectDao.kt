@@ -21,4 +21,10 @@ interface UserRecollectDao {
 
     @Delete
     suspend fun deleteUserRecollectData(userRecollect: UserRecollect): Int
+
+    @Query("SELECT total(cantidad) FROM `UserRecollect`")
+    fun getTotalMaterial(): LiveData<Double>
+
+    @Query("SELECT total(co2) FROM `UserRecollect`")
+    fun getTotalKgCo2(): LiveData<Double>
 }
