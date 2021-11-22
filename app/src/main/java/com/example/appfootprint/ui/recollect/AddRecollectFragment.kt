@@ -128,6 +128,7 @@ class AddRecollectFragment : Fragment() {
     private fun postRecollect() {
         mBinding.progressBar.visibility = View.VISIBLE
         val key = mDatabaseReference.push().key!!
+        val cantMaterial = etCantMaterial.text.toString()
         val storageReference = mStorageReference.child(PATH_RECOLLECT)
                         .child(FirebaseAuth.getInstance().currentUser!!.uid).child(key)
         if (mPhotoSelectedUri != null) {
@@ -147,7 +148,7 @@ class AddRecollectFragment : Fragment() {
                     it.storage.downloadUrl.addOnSuccessListener {
                         saveRecollect(key, it.toString(), mBinding.etTitulo.text.toString().trim(),
                             mBinding.etNombre.text.toString().trim(), mBinding.tvFecha.text.toString().trim(),
-                            mBinding.etCantMaterial.text.toString().trim(), material,  viewModel.calculateRecollect(etCantMaterial.text.toString(), material))
+                            cantMaterial.toDouble(), material, viewModel.calculateRecollect(cantMaterial.toDouble(), material))
                         mBinding.feedContainer.visibility = View.GONE
                         this.findNavController().popBackStack()
                     }
@@ -161,8 +162,8 @@ class AddRecollectFragment : Fragment() {
       }
 
     private fun saveRecollect(key: String, url: String, title: String, name: String,
-                                date: String, cantMaterial: String, typeMaterial:String,
-                                cantCo2:String) {
+                                date: String, cantMaterial: Double, typeMaterial:String,
+                                cantCo2:Double) {
         val recollect = Recollect(title = title, photoUrl = url, name = name, date = date,
                                     cantMaterial = cantMaterial, typeMaterial = typeMaterial,
                                     cantC02 = cantCo2)
@@ -182,9 +183,9 @@ class AddRecollectFragment : Fragment() {
         val userRecollect = UserRecollect(
             null,
             material,
-            cantMaterial,
+            cantMaterial.toDouble(),
             tvFecha.text.toString(),
-            viewModel.calculateRecollect(cantMaterial, material)
+            viewModel.calculateRecollect(cantMaterial.toDouble(), material)
         )
        viewModel.insertRecollectData(userRecollect)
 
