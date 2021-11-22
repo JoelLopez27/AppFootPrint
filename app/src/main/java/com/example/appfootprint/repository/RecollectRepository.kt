@@ -1,5 +1,6 @@
 package com.example.appfootprint.repository
 
+import androidx.lifecycle.LiveData
 import com.example.appfootprint.db.RecollectDatabase
 import com.example.appfootprint.db.UserRecollect
 import com.example.appfootprint.models.Article
@@ -7,6 +8,13 @@ import com.example.appfootprint.models.Article
 class RecollectRepository(
     val db: RecollectDatabase
 ) {
+    fun getTotalMaterial(): LiveData<Double> {
+       return db.getRecollectDao().getTotalMaterial()
+    }
+
+    fun getTotalKgCo2(): LiveData<Double> {
+        return db.getRecollectDao().getTotalKgCo2()
+    }
 
     suspend fun updateUserRecollectData(userRecollect: UserRecollect) = db.getRecollectDao().updateUserRecollectData(userRecollect)
 
