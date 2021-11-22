@@ -10,7 +10,6 @@ import android.widget.Toast
 import androidx.navigation.findNavController
 import com.example.appfootprint.MainActivity
 import com.example.appfootprint.R
-import com.example.appfootprint.databinding.FragmentFootprintHydroElectricBinding
 import com.example.appfootprint.databinding.FragmentTreesEquivalentBinding
 
 
