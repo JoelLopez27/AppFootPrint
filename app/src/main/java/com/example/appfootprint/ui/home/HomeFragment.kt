@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -26,8 +27,8 @@ import com.google.firebase.database.FirebaseDatabase
 
 class HomeFragment : Fragment() {
 
-    private lateinit var homeViewModel: HomeViewModel
     private lateinit var mBinding: FragmentHomeBinding
+    lateinit var viewModel: AddRecollectViewModel
     private lateinit var mFirebaseAdapter: FirebaseRecyclerAdapter<Recollect, RecollectHolder>
     private lateinit var mLayoutManager: RecyclerView.LayoutManager
 
@@ -50,7 +51,7 @@ class HomeFragment : Fragment() {
             recollect!!.id = it.key!!
             recollect
         }).build()
-        // .setQuery(query, Recollect::class.java).build()
+
 
         mFirebaseAdapter = object : FirebaseRecyclerAdapter<Recollect, RecollectHolder>(options){
 
@@ -110,6 +111,11 @@ class HomeFragment : Fragment() {
             setHasFixedSize(true)
             layoutManager = mLayoutManager
             adapter = mFirebaseAdapter
+        }
+
+        mBinding.fab.setOnClickListener {
+            it.findNavController()
+                .navigate(R.id.action_nav_home_to_nav_recollect)
         }
     }
 
