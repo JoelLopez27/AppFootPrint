@@ -33,7 +33,6 @@ class RecollectAdapter: RecyclerView.Adapter<RecollectAdapter.RecollectViewHolde
         }
     }
 
-
         val differ = AsyncListDiffer(this, differCallback)
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecollectViewHolder {
@@ -52,7 +51,7 @@ class RecollectAdapter: RecyclerView.Adapter<RecollectAdapter.RecollectViewHolde
                 materialTextView.text = recollect.material
                 cantMaterialTextView.text = String.format(context.getString(R.string.cant_material), recollect.cantidad)
                 dateRecollectTextView.text = recollect.fecha
-                kgCo2TextView.text = recollect.co2
+                kgCo2TextView.text = recollect.co2.toString()
 
              /*   val recollectCircle = (holder.itemView.kgCo2TextView.background) as GradientDrawable
                 val recollectColor = getRecollectolor(recollect.co2.toFloat())
