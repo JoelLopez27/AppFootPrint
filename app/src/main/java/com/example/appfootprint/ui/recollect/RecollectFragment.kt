@@ -111,5 +111,4 @@ class RecollectFragment : Fragment() {
             emptyViewText.visibility = View.GONE
     }
 
-
 }
