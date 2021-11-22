@@ -1,5 +1,6 @@
 package com.example.appfootprint.ui.recollect
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.appfootprint.db.UserRecollect
@@ -8,38 +9,37 @@ import kotlinx.coroutines.launch
 
 class AddRecollectViewModel(val recollectRepository: RecollectRepository): ViewModel() {
 
-  fun calculateRecollect(cantMaterial: String, material: String): String{
+  fun calculateRecollect(cantMaterial: Double, material: String): Double{
 
-      val cantKG: Float = cantMaterial.toFloat()
-      val totalKg : String
+      val totalKg : Double
 
         when (material) {
            "Aluminio" -> {
-               totalKg = "%.1f".format(cantKG * 9)
+               totalKg = ("%.1f".format(cantMaterial * 9)).toDouble()
             }
             "Papel" -> {
-                totalKg = "%.1f".format(cantKG * 0.9)
+                totalKg = ("%.1f".format(cantMaterial * 0.9)).toDouble()
             }
             "Cobre" -> {
-                totalKg = "%.1f".format(cantKG * 2.77)
+                totalKg = ("%.1f".format(cantMaterial * 2.77)).toDouble()
             }
             "Pilas o Baterias" -> {
-                totalKg = "%.1f".format(cantKG * 0.07)
+                totalKg = ("%.1f".format(cantMaterial * 0.07)).toDouble()
             }
             "Envases Metalicos" -> {
-                totalKg = "%.1f".format(cantKG * 7)
+                totalKg = ("%.1f".format(cantMaterial * 7)).toDouble()
             }
             "Aparatos electrónicos" -> {
-                totalKg = "%.1f".format(cantKG * 14)
+                totalKg = ("%.1f".format(cantMaterial * 14)).toDouble()
             }
             "Textiles" -> {
-                totalKg = "%.1f".format(cantKG * 3.6)
+                totalKg = ("%.1f".format(cantMaterial * 3.6)).toDouble()
             }
             "Plastico" -> {
-                totalKg = "%.1f".format(cantKG * 2.70)
+                totalKg = ("%.1f".format(cantMaterial * 2.70)).toDouble()
             }
             else -> {
-                return (0).toString()
+                return (0).toDouble()
             }
         }
             return totalKg
@@ -72,5 +72,8 @@ class AddRecollectViewModel(val recollectRepository: RecollectRepository): ViewM
         }
     }
 
+    fun getCountMaterial(): LiveData<Double> = recollectRepository.getTotalMaterial()
+
+    fun getCountKgCo2(): LiveData<Double> = recollectRepository.getTotalKgCo2()
 
 }
