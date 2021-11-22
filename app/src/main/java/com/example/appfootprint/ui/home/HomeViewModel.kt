@@ -3,11 +3,10 @@ package com.example.appfootprint.ui.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.appfootprint.repository.RecollectRepository
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel(val recollectRepository: RecollectRepository) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-       // value = "This is home Fragment"
-    }
-    val text: LiveData<String> = _text
+    fun getSavedRecollect() = recollectRepository.getSavedRecollect()
+
 }
