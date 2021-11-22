@@ -15,20 +15,12 @@
         android:id="@+id/toolbar"
         android:layout_gravity= "bottom"
         app:navigationIcon="@drawable/ic_menu_blanco"
+        app:itemIconTint="@color/white"
         app:menu="@menu/activity_main_drawer"
-        app:hideOnScroll="true"
         android:backgroundTint="@color/principal">
 
     </com.google.android.material.bottomappbar.BottomAppBar>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_add"
-        app:itemIconTint="@color/white"
-        android:contentDescription="@string/calcular_huella_de_carbono"
-        app:layout_anchor="@id/toolbar"/>
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
