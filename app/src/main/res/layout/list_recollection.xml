@@ -55,7 +55,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:fontFamily="@font/nunito_regular"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/guideline4"
             app:layout_constraintStart_toEndOf="@+id/materialTextView2"
