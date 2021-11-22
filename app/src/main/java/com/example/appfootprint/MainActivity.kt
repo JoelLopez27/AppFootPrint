@@ -1,6 +1,5 @@
 package com.example.appfootprint
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.View
@@ -12,7 +11,6 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -29,10 +27,8 @@ import com.example.appfootprint.ui.footprint.calfootprint.ViewModelProviderFacto
 import com.example.appfootprint.ui.news.BreakingNewsViewModel
 import com.example.appfootprint.ui.news.BreakingNewsViewModelProviderFactory
 import com.example.appfootprint.ui.recollect.AddRecollectViewModel
-import com.example.appfootprint.ui.recollect.RecollectFragment
 import com.example.appfootprint.ui.recollect.RecollectViewModelProviderFactory
 import com.firebase.ui.auth.AuthUI
-import com.firebase.ui.auth.IdpResponse
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.nav_header_main.view.*
 import java.util.*
@@ -44,7 +40,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mBinding: ActivityMainBinding
     private lateinit var mAuthListener: FirebaseAuth.AuthStateListener
     private var mFirebaseAuth: FirebaseAuth? = null
-    private val RC_SIGN_IN =21
     lateinit var viewModel: BreakingNewsViewModel
     lateinit var viewModel2: AddRecollectViewModel
     lateinit var viewModel3: ResultViewModel
@@ -102,11 +97,6 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-
-            mBinding.appBarMain.fab.setOnClickListener {
-            LaunchRecollectFragment()
-        }
-
        setupAuth()
 
     }
@@ -130,21 +120,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun LaunchRecollectFragment() {
-        val recollectFragment = RecollectFragment()
-        val fragment : Fragment? =
-
-        supportFragmentManager.findFragmentByTag(RecollectFragment::class.java.simpleName)
-
-        if(fragment !is RecollectFragment){
-            supportFragmentManager.beginTransaction()
-                .add(R.id.nav_host_fragment_content_main, recollectFragment, RecollectFragment::class.java.simpleName)
-                .commit()
-        }
-
-    }
-
-
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.main, menu)
         return true
@@ -165,12 +140,5 @@ class MainActivity : AppCompatActivity() {
         mFirebaseAuth?.removeAuthStateListener (mAuthListener)
     }
 
-   /* override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == RC_SIGN_IN)
-            if (resultCode == RESULT_OK){
-                Toast.makeText(this, "Bienvenido...", Toast.LENGTH_SHORT).show()
-            }
-    }  */
 
 }
