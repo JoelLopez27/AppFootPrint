@@ -9,7 +9,8 @@
     <string name="cant_material">%1$s Kg</string>
     <string name="cant_material_home">Ha recolectado %1$s Kg de</string>
     <string name="cant_co2_home">Ayudó al Planeta con %1$s Kg de CO2</string>
-
+    <string name="cant_material_profile">%1$s Kg de Material Recolectado</string>
+    <string name="cant_kgco2_profile">%1$s Kg de CO2</string>
     <string-array name="type_cars">
         <item>-Seleccionar Tipo de Carro-</item>
         <item>SmallDieselCar</item>
