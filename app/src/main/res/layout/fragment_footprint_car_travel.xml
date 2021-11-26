@@ -74,6 +74,7 @@
 
         <Button
             android:id="@+id/btnCalcular"
+            app:cornerRadius="30dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="40dp"
             android:layout_width="wrap_content"
