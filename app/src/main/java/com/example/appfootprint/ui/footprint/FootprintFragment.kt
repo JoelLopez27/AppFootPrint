@@ -29,6 +29,11 @@ class FootprintFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        mBinding.fab.setOnClickListener {
+            it.findNavController()
+                .navigate(R.id.action_nav_footprint_to_nav_recollect)
+        }
+
        mBinding.button.setOnClickListener {
             it.findNavController().navigate(
                 R.id.action_nav_footprint_to_footprintCarTravelFragment)
