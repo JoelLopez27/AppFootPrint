@@ -8,9 +8,29 @@
     <string name="action_settings">Settings</string>
     <string name="cant_material">%1$s Kg</string>
     <string name="cant_material_home">Ha recolectado %1$s Kg de</string>
+    <string name="type_material_top">Ha recolectado %1$s</string>
+    <string name="type_material_co2">Recolectando %1$s</string>
     <string name="cant_co2_home">Ayudó al Planeta con %1$s Kg de CO2</string>
     <string name="cant_material_profile">%1$s Kg de Material Recolectado</string>
     <string name="cant_kgco2_profile">%1$s Kg de CO2</string>
+    <string name="menu_home">Home</string>
+    <string name="recollection_personal">Recoleción Personal</string>
+    <string name="footprint">Huellas de Carbono</string>
+    <string name="news_environment">Ultimas Noticias</string>
+    <string name="menu_footprint">Huellas de Crabono</string>
+    <string name="menu_savedNews">Noticias Guardadas</string>
+    <string name="menu_news">ULTIMAS NOTICIAS</string>
+    <string name="menu_recollect">RECOLECCION PERSONAL</string>
+    <string name="calcular_huella_de_carbono">Calculate Foot Print</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="news_favorites">News Favorites</string>
+    <string name="noticias_guardadas">Noticias Guardadas</string>
+    <string name="helper_required">Requerido</string>
+    <string name="dont_show_recollection">No Hay Recolecciones Por Mostrar</string>
+    <string name="publicar_text">Publicar Recolección en el Feed</string>
+    <string name="top_recolectores">Top Recolectores</string>
+    <string name="top_recolectores_text">Top 3 Recolectores</string>
     <string-array name="type_cars">
         <item>-Seleccionar Tipo de Carro-</item>
         <item>SmallDieselCar</item>
@@ -108,30 +128,4 @@
         <item>Plastico</item>
     </string-array>
 
-
-    <string name="menu_home">Home</string>
-    <string name="recollection_personal">Recoleción Personal</string>
-    <string name="footprint">Huellas de Carbono</string>
-    <string name="news_environment">Ultimas Noticias</string>
-    <string name="menu_footprint">Huellas de Crabono</string>
-    <string name="menu_savedNews">Noticias Guardadas</string>
-    <string name="menu_news">ULTIMAS NOTICIAS</string>
-    <string name="menu_recollect">RECOLECCION PERSONAL</string>
-    <string name="large_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Aliquam eleifend mi in nulla posuere sollicitudin aliquam ultrices. Dignissim convallis aenean et tortor at risus viverra adipiscing. Nisi porta lorem mollis aliquam ut. Arcu dictum varius duis at consectetur lorem donec massa sapien. Enim neque volutpat ac tincidunt vitae. Blandit turpis cursus in hac habitasse platea. Fermentum posuere urna nec tincidunt. Dictumst quisque sagittis purus sit amet volutpat consequat mauris. Dui ut ornare lectus sit. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non. At tempor commodo ullamcorper a lacus vestibulum sed arcu. Congue quisque egestas diam in arcu cursus euismod quis viverra. Tortor posuere ac ut consequat semper viverra nam libero. Duis at tellus at urna. Morbi tristique senectus et netus.
-
-Nulla facilisi morbi tempus iaculis urna id volutpat. Nulla facilisi cras fermentum odio eu feugiat pretium nibh. Eget velit aliquet sagittis id consectetur purus ut faucibus. In metus vulputate eu scelerisque felis. Velit ut tortor pretium viverra suspendisse potenti nullam ac. Duis convallis convallis tellus id. Suspendisse sed nisi lacus sed. Viverra vitae congue eu consequat ac felis donec et. Diam maecenas ultricies mi eget mauris pharetra et ultrices neque. Vulputate eu scelerisque felis imperdiet proin fermentum. Risus sed vulputate odio ut enim blandit. Facilisis volutpat est velit egestas dui id ornare. Sodales ut eu sem integer vitae justo eget magna. Vitae tempus quam pellentesque nec nam aliquam sem. Morbi tristique senectus et netus. Sagittis vitae et leo duis ut. Fermentum posuere urna nec tincidunt praesent semper feugiat. Dolor magna eget est lorem ipsum dolor sit amet.
-
-Diam sit amet nisl suscipit adipiscing bibendum est. Tellus rutrum tellus pellentesque eu tincidunt tortor aliquam nulla. Lectus nulla at volutpat diam ut venenatis tellus in. Blandit turpis cursus in hac. Netus et malesuada fames ac turpis egestas. In nisl nisi scelerisque eu ultrices vitae auctor eu augue. Porttitor lacus luctus accumsan tortor. Felis donec et odio pellentesque diam. Placerat in egestas erat imperdiet sed. Consectetur adipiscing elit duis tristique.
-
-Cras ornare arcu dui vivamus arcu felis bibendum ut. Suscipit tellus mauris a diam maecenas. Orci a scelerisque purus semper eget duis at. Sed turpis tincidunt id aliquet risus. Ultrices vitae auctor eu augue ut lectus arcu bibendum at. Diam vulputate ut pharetra sit. In arcu cursus euismod quis viverra nibh cras pulvinar. Dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim. Rhoncus est pellentesque elit ullamcorper dignissim cras. Elit scelerisque mauris pellentesque pulvinar pellentesque habitant morbi tristique. Gravida quis blandit turpis cursus in hac. Pharetra pharetra massa massa ultricies. Viverra maecenas accumsan lacus vel facilisis. Faucibus ornare suspendisse sed nisi lacus sed viverra tellus in.
-
-Sapien et ligula ullamcorper malesuada. Faucibus ornare suspendisse sed nisi. Mauris rhoncus aenean vel elit scelerisque mauris pellentesque. Eget velit aliquet sagittis id consectetur purus. Arcu non sodales neque sodales ut. Velit euismod in pellentesque massa placerat duis ultricies lacus sed. Tortor aliquam nulla facilisi cras fermentum. Eget magna fermentum iaculis eu. Enim sit amet venenatis urna cursus eget nunc scelerisque. Convallis aenean et tortor at risus viverra adipiscing at in. Augue ut lectus arcu bibendum. Purus viverra accumsan in nisl nisi scelerisque eu. Tortor posuere ac ut consequat semper viverra nam.</string>
-    <string name="calcular_huella_de_carbono">Calculate Foot Print</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="news_favorites">News Favorites</string>
-    <string name="noticias_guardadas">Noticias Guardadas</string>
-    <string name="helper_required">Requerido</string>
-    <string name="dont_show_recollection">No Hay Recolecciones Por Mostrar</string>
-    <string name="publicar_text">Publicar Recolección en el Feed</string>
 </resources>

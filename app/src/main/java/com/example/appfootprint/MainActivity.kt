@@ -92,7 +92,7 @@ class MainActivity : AppCompatActivity() {
             .into(headerView.imageView)
 
         appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.nav_home, R.id.nav_recollect, R.id.nav_footprint, R.id.nav_news, R.id.nav_savednews, R.id.nav_profile), drawerLayout
+            setOf(R.id.nav_home, R.id.nav_topRecollects, R.id.nav_recollect, R.id.nav_footprint, R.id.nav_news, R.id.nav_savednews, R.id.nav_profile), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)

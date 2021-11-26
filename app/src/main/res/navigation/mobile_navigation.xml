@@ -91,6 +91,13 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_nav_footprint_to_nav_recollect"
+            app:destination="@id/nav_recollect"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
 
     <fragment
@@ -101,6 +108,13 @@
         <action
             android:id="@+id/action_nav_news_to_viewArticleFragment"
             app:destination="@id/viewArticleFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_nav_news_to_nav_recollect"
+            app:destination="@id/nav_recollect"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
@@ -262,5 +276,18 @@
         android:name="com.example.appfootprint.MainActivity"
         android:label="app_bar_main"
         tools:layout="@layout/app_bar_main" />
+    <fragment
+        android:id="@+id/nav_topRecollects"
+        android:name="com.example.appfootprint.ui.toprecollect.TopRecollectsFragment"
+        android:label="fragment_top_recollects"
+        tools:layout="@layout/fragment_top_recollects" >
+        <action
+            android:id="@+id/action_nav_topRecollects_to_nav_recollect"
+            app:destination="@id/nav_recollect"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
 
 </navigation>
