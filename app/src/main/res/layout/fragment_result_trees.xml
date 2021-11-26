@@ -51,6 +51,7 @@
             android:layout_height="wrap_content"
             android:text="Volver a Menu"
             android:textStyle="bold"
+            app:cornerRadius="30dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -62,6 +63,7 @@
             android:layout_height="wrap_content"
             android:text="Volver a Calcular"
             android:textStyle="bold"
+            app:cornerRadius="30dp"
             android:layout_marginLeft="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/returnMenu">
