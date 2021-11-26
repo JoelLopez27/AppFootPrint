@@ -9,6 +9,10 @@
             android:icon="@drawable/ic_home"
             android:title="@string/menu_home" />
         <item
+            android:id="@+id/nav_topRecollects"
+            android:icon="@drawable/ic_account"
+            android:title="@string/top_recolectores" />
+        <item
             android:id="@+id/nav_recollect"
             android:icon="@drawable/ic_restore_from_trash"
             android:title="@string/recollection_personal" />
