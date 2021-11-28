@@ -4,7 +4,7 @@
         <item android:drawable="@color/principal">
         </item>
         <item>
-            <bitmap android:src="@drawable/ambiente_logo"
+            <bitmap android:src="@drawable/icono_appfootprint2"
                     android:gravity="center">
             </bitmap>
         </item>

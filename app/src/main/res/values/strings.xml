@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AppFootPrint</string>
+    <string name="app_name">EcoPrint</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Joel Rangel</string>
@@ -28,6 +28,7 @@
     <string name="noticias_guardadas">Noticias Guardadas</string>
     <string name="helper_required">Requerido</string>
     <string name="dont_show_recollection">No Hay Recolecciones Por Mostrar</string>
+    <string name="dont_show_news">No Hay Noticias Guardadas Por Mostrar</string>
     <string name="publicar_text">Publicar Recolección en el Feed</string>
     <string name="top_recolectores">Top Recolectores</string>
     <string name="top_recolectores_text">Top 3 Recolectores</string>
