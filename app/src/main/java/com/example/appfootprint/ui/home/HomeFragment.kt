@@ -37,7 +37,6 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?): View? {
         mBinding = FragmentHomeBinding.inflate(inflater, container, false)
         return mBinding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -56,6 +55,7 @@ class HomeFragment : Fragment() {
         mFirebaseAdapter = object : FirebaseRecyclerAdapter<Recollect, RecollectHolder>(options){
 
             private lateinit var mContext: Context
+
             override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecollectHolder {
                 mContext = parent.context
 
@@ -70,85 +70,86 @@ class HomeFragment : Fragment() {
                 with(holder) {
                     setListener(recollect)
 
-                    binding.tvNombre.text = recollect.name
-                    binding.tvTitle.text = recollect.title
-                    binding.tvFecha.text = recollect.date
-                    binding.tvcantMaterial.text = String.format(
+                        binding.tvNombre.text = recollect.name
+                        binding.tvTitle.text = recollect.title
+                        binding.tvFecha.text = recollect.date
+                        binding.tvcantMaterial.text = String.format(
                         mContext.getString(R.string.cant_material_home),
                         recollect.cantMaterial
                     )
-                    binding.tvTipoMaterial.text = recollect.typeMaterial
-                    binding.CantCO2.text =
+                        binding.tvTipoMaterial.text = recollect.typeMaterial
+                        binding.CantCO2.text =
                         String.format(mContext.getString(R.string.cant_co2_home), recollect.cantC02)
-                    binding.cdLike.text = recollect.likeList.keys.size.toString()
-                    FirebaseAuth.getInstance().currentUser?.let {
-                    binding.cdLike.isChecked =
+                        binding.cdLike.text = recollect.likeList.keys.size.toString()
+                        FirebaseAuth.getInstance().currentUser?.let {
+                        binding.cdLike.isChecked =
                         recollect.likeList.containsKey(it.uid)
                     }
-                    Glide.with(mContext)
-                        .load(recollect.photoUrl)
-                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-                        .centerCrop()
-                        .into(binding.imagPhoto)
+                        Glide.with(mContext)
+                            .load(recollect.photoUrl)
+                            .diskCacheStrategy(DiskCacheStrategy.ALL)
+                            .centerCrop()
+                            .into(binding.imagPhoto)
 
+                    }
+                 }
+
+                override fun onDataChanged() {
+                     super.onDataChanged()
+                     mBinding.progressBar.visibility = View.GONE
                 }
-            }
 
-            override fun onDataChanged() {
-                super.onDataChanged()
-                mBinding.progressBar.visibility = View.GONE
-            }
-
-            override fun onError(error: DatabaseError) {
-                super.onError(error)
-                Toast.makeText(mContext, "Ha Ocurrido Un Error", Toast.LENGTH_SHORT).show()
-            }
+                override fun onError(error: DatabaseError) {
+                    super.onError(error)
+                    Toast.makeText(mContext, "Ha Ocurrido Un Error", Toast.LENGTH_SHORT).show()
+                }
         }
 
         mLayoutManager = LinearLayoutManager(context)
 
         mBinding.recyclerView.apply {
-            setHasFixedSize(true)
-            layoutManager = mLayoutManager
-            adapter = mFirebaseAdapter
+                setHasFixedSize(true)
+                layoutManager = mLayoutManager
+                adapter = mFirebaseAdapter
         }
 
         mBinding.fab.setOnClickListener {
-            it.findNavController()
+                it.findNavController()
                 .navigate(R.id.action_nav_home_to_nav_recollect)
+            }
         }
-    }
 
-    override fun onStart() {
-        super.onStart()
-        mFirebaseAdapter.startListening()
-    }
+        override fun onStart() {
+                super.onStart()
+                mFirebaseAdapter.startListening()
+         }
 
-    override fun onStop() {
-        super.onStop()
-        mFirebaseAdapter.stopListening()
-    }
+        override fun onStop() {
+                super.onStop()
+                mFirebaseAdapter.stopListening()
+        }
 
-    private fun setLike(recollect: Recollect, checked: Boolean){
-        val databaseReference = FirebaseDatabase.getInstance().reference.child("recollects")
-        if (checked){
-            databaseReference.child(recollect.id).child("likeList")
+        private fun setLike(recollect: Recollect, checked: Boolean){
+
+             val databaseReference = FirebaseDatabase.getInstance().reference.child("recollects")
+
+             if (checked){
+                databaseReference.child(recollect.id).child("likeList")
                 .child(FirebaseAuth.getInstance().currentUser!!.uid).setValue(checked)
-        }else{
-            databaseReference.child(recollect.id).child("likeList")
+            }else{
+                 databaseReference.child(recollect.id).child("likeList")
                 .child(FirebaseAuth.getInstance().currentUser!!.uid).setValue(null)
+            }
         }
-    }
 
-    inner class RecollectHolder(view: View) : RecyclerView.ViewHolder(view){
-        val binding = ItemRecollectHomeBinding.bind(view)
+     inner class RecollectHolder(view: View) : RecyclerView.ViewHolder(view){
+         val binding = ItemRecollectHomeBinding.bind(view)
 
-        fun setListener(recollect: Recollect){
+            fun setListener(recollect: Recollect){
 
             binding.cdLike.setOnCheckedChangeListener { compoundButton, checked ->
                 setLike(recollect, checked)
             }
         }
     }
-
 }
