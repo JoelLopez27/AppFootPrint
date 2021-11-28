@@ -103,15 +103,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:layout_marginEnd="32dp"
+                android:layout_marginEnd="25dp"
                 android:gravity="center"
                 android:text="Fecha Seleccionada:"
-                android:textSize="15sp"
+                android:textSize="12sp"
                 android:textStyle="bold"
                 android:visibility="gone"
                 app:layout_constraintBottom_toTopOf="@id/tvFecha"
                 app:layout_constraintEnd_toStartOf="@id/botonDate">
-
             </TextView>
 
             <TextView
@@ -283,7 +282,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <Button
-            android:id="@+id/boton"
+            android:id="@+id/botonCalcular"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"

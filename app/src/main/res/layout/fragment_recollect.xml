@@ -1,23 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:id="@+id/coordinatorLayout"
-    android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".ui.recollect.RecollectFragment">
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="81dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginLeft="8dp">
+        android:background="@color/white"
+        tools:context=".ui.recollect.RecollectFragment">
 
         <Button
             android:id="@+id/boton"
@@ -27,37 +16,27 @@
             android:text="Agregar nueva Recolección"
             android:textAllCaps="false"
             app:cornerRadius="30dp"
+            android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
         </Button>
 
-        <TextView
-            android:id="@+id/tvcantMaterial"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="31dp"
-            android:text="68.6"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/recyclerView"
-            app:layout_constraintEnd_toEndOf="parent">
-
-        </TextView>
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="50dp"
+           android:layout_marginTop="65dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
             android:clipToPadding="false"
             android:layoutAnimation="@anim/layout_animation"
             android:paddingBottom="66dp"
             app:layout_constraintTop_toBottomOf="@id/boton"
-            tools:layout_editor_absoluteX="0dp"
             tools:listitem="@layout/list_recollection" />
 
-   <ProgressBar
+        <ProgressBar
             android:id="@+id/progressBar"
             style="?android:attr/progressBarStyle"
             android:layout_width="400dp"
@@ -75,15 +54,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@string/dont_show_recollection"
-            android:visibility="gone"
+            android:visibility="visible"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:visibility="visible" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
