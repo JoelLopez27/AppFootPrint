@@ -76,4 +76,6 @@ class AddRecollectViewModel(val recollectRepository: RecollectRepository): ViewM
 
     fun getCountKgCo2(): LiveData<Double> = recollectRepository.getTotalKgCo2()
 
+    fun getSizeRows(): LiveData<Int> = recollectRepository.getSizeRows()
+
 }
