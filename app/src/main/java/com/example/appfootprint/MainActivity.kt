@@ -30,6 +30,8 @@ import com.example.appfootprint.ui.recollect.AddRecollectViewModel
 import com.example.appfootprint.ui.recollect.RecollectViewModelProviderFactory
 import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.nav_header_main.view.*
 import java.util.*
 
@@ -59,7 +61,6 @@ class MainActivity : AppCompatActivity() {
         mBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
 
-
         val resultRepository = ResultRepository()
         val resultViewModelProviderFactory = ViewModelProviderFactory(resultRepository)
         viewModel3 = ViewModelProvider(this, resultViewModelProviderFactory).get(ResultViewModel::class.java)
@@ -68,9 +69,8 @@ class MainActivity : AppCompatActivity() {
         val recollectProviderFactory = RecollectViewModelProviderFactory(recollectRepository)
         viewModel2 = ViewModelProvider(this, recollectProviderFactory).get(AddRecollectViewModel::class.java)
 
-
         val newsRepository = NewsRepository(ArticleDatabase(this))
-        val viewModelProviderFactory = BreakingNewsViewModelProviderFactory(newsRepository)
+        val viewModelProviderFactory = BreakingNewsViewModelProviderFactory(application, newsRepository)
         viewModel = ViewModelProvider(this, viewModelProviderFactory).get(BreakingNewsViewModel::class.java)
 
         setSupportActionBar(mBinding.appBarMain.toolbar)
