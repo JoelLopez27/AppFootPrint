@@ -27,4 +27,8 @@ interface UserRecollectDao {
 
     @Query("SELECT total(co2) FROM `UserRecollect`")
     fun getTotalKgCo2(): LiveData<Double>
+
+    @Query("SELECT count(*) FROM UserRecollect")
+    fun getSizeRows(): LiveData<Int>
+
 }
