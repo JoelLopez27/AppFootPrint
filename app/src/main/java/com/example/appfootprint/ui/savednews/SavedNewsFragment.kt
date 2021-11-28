@@ -16,7 +16,6 @@ import com.example.appfootprint.adapters.NewsAdapter
 import com.example.appfootprint.databinding.FragmentSavedNewsBinding
 import com.example.appfootprint.ui.news.BreakingNewsViewModel
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.fragment_breaking_news.*
 import kotlinx.android.synthetic.main.fragment_saved_news.*
 
 class savedNewsFragment : Fragment() {
@@ -24,11 +23,13 @@ class savedNewsFragment : Fragment() {
     private lateinit var mBinding: FragmentSavedNewsBinding
     lateinit var viewModel: BreakingNewsViewModel
     lateinit var newsAdapter: NewsAdapter
+    var totalRows : Int = 0
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
+
         mBinding = FragmentSavedNewsBinding.inflate(inflater, container, false)
         return mBinding.root
 
@@ -36,9 +37,21 @@ class savedNewsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         viewModel = (activity as MainActivity).viewModel
 
         setupRecyclerView()
+
+        viewModel.getSizeRows().observe(viewLifecycleOwner, Observer {
+            totalRows = it
+
+            if(totalRows == 0){
+                mBinding.emptyViewText.visibility = View.VISIBLE
+            }else{
+                mBinding.emptyViewText.visibility = View.GONE
+            }
+        })
+
 
         newsAdapter.setOnItemClickListener {
             val bundle = Bundle().apply {
@@ -51,14 +64,15 @@ class savedNewsFragment : Fragment() {
         }
 
         viewModel.getSavedNews().observe(viewLifecycleOwner, Observer { articles ->
+
             newsAdapter.differ.submitList(articles)
 
         })
 
         val itemTouchHelperCallback = object : ItemTouchHelper.SimpleCallback(
             ItemTouchHelper.UP or ItemTouchHelper.DOWN,
-            ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
-        ){
+            ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT){
+
             override fun onMove(
                 recyclerView: RecyclerView,
                 viewHolder: RecyclerView.ViewHolder,
@@ -78,7 +92,6 @@ class savedNewsFragment : Fragment() {
                     show()
                 }
             }
-
         }
 
         ItemTouchHelper(itemTouchHelperCallback).apply {
