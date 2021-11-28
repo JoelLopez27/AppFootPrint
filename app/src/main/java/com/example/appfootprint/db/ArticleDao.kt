@@ -15,4 +15,7 @@ interface ArticleDao {
 
     @Delete
     suspend fun deleteArticle(article: Article)
+
+    @Query("SELECT count(*) FROM articles")
+    fun getSizeRows(): LiveData<Int>
 }
