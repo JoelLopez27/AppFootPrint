@@ -2,11 +2,13 @@ package com.example.appfootprint.ui.recollect
 
 import android.app.Activity
 import android.app.AlertDialog
+import android.content.ContentValues.TAG
 import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -24,8 +26,7 @@ import com.example.appfootprint.db.UserRecollect
 import com.example.appfootprint.ui.home.Recollect
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import kotlinx.android.synthetic.main.fragment_add_recollect.*
@@ -85,7 +86,7 @@ class AddRecollectFragment : Fragment() {
             selectDate()
         }
 
-        boton.setOnClickListener {
+        botonCalcular.setOnClickListener {
             if (mBinding.etCantMaterial.text.isNullOrEmpty() || spinner.selectedItem.equals("-Seleccionar Tipo de Material-")
                 || mBinding.tvFecha.text.isEmpty() ) {
                 addDataMissign()
@@ -106,6 +107,28 @@ class AddRecollectFragment : Fragment() {
             }
         }
 
+        val connectedRef =  FirebaseDatabase.getInstance().getReference(".info/connected")
+
+        connectedRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val connected = snapshot.getValue(Boolean::class.java) ?: false
+                botonCalcular.setOnClickListener {
+                    if (mBinding.publicarFeed.isChecked && connected == false) {
+                        Snackbar.make(
+                            mBinding.root, "Se perdió la Conexión a Internet, Intente más Tarde",
+                            Snackbar.LENGTH_SHORT
+                        ).show()
+                    }
+
+                }
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.w(TAG, "Listener was cancelled")
+            }
+        })
+
         mStorageReference = FirebaseStorage.getInstance().reference
         mDatabaseReference = FirebaseDatabase.getInstance().reference.child(PATH_RECOLLECT)
 
@@ -118,6 +141,9 @@ class AddRecollectFragment : Fragment() {
             override fun onNothingSelected(arg0: AdapterView<*>) {
             }
         }
+
+
+
     }
 
     private fun openGallery() {
