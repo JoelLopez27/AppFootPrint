@@ -16,7 +16,7 @@ class RecollectRepository(
         return db.getRecollectDao().getTotalKgCo2()
     }
 
-    suspend fun updateUserRecollectData(userRecollect: UserRecollect) = db.getRecollectDao().updateUserRecollectData(userRecollect)
+    fun updateUserRecollectData(userRecollect: UserRecollect) = db.getRecollectDao().updateUserRecollectData(userRecollect)
 
     suspend fun getUserRecollectData(id: Int) = db.getRecollectDao().getUserRecollectData(id)
 
@@ -25,4 +25,6 @@ class RecollectRepository(
     fun getSavedRecollect() = db.getRecollectDao().getAll()
 
     suspend fun deleteRecollect(userRecollect: UserRecollect) = db.getRecollectDao().deleteUserRecollectData(userRecollect)
+
+    fun getSizeRows() : LiveData<Int> = db.getRecollectDao().getSizeRows()
 }
