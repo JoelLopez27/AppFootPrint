@@ -7,13 +7,25 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp">
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/fondocircular"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </ImageView>
+
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
-        android:text="Cantidad de Arboles Necesarios para producir esa cantidad:"
+        android:text="Cantidad de Arboles Necesarios para producirlos:"
         android:textAlignment="center"
+        android:textColor="@color/white"
         android:textAllCaps="false"
         android:textSize="35dp"
         android:textStyle="bold"
@@ -29,21 +41,34 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:text="00"
-        android:textSize="50dp"
+        android:textSize="50sp"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title">
 
     </com.google.android.material.textview.MaterialTextView>
 
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/arbolanimado"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cantArboles">
+
+    </ImageView>
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="190dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cantArboles">
+
 
         <Button
             android:id="@+id/returnMenu"
