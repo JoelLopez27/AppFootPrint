@@ -27,4 +27,6 @@ class RecollectRepository(
     suspend fun deleteRecollect(userRecollect: UserRecollect) = db.getRecollectDao().deleteUserRecollectData(userRecollect)
 
     fun getSizeRows() : LiveData<Int> = db.getRecollectDao().getSizeRows()
+
+    fun getDate() : LiveData<String> = db.getRecollectDao().getDate()
 }
