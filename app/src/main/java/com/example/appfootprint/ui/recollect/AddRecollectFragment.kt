@@ -85,47 +85,77 @@ class AddRecollectFragment : Fragment() {
         botonDate.setOnClickListener {
             selectDate()
         }
-
-        botonCalcular.setOnClickListener {
+/*
+       botonCalcular.setOnClickListener {
             if (mBinding.etCantMaterial.text.isNullOrEmpty() || spinner.selectedItem.equals("-Seleccionar Tipo de Material-")
                 || mBinding.tvFecha.text.isEmpty() ) {
                 addDataMissign()
             } else {
-                if (mBinding.publicarFeed.isChecked){
-                    if(mBinding.etNombre.text.isNullOrEmpty() || mBinding.etTitulo.text.isNullOrEmpty()){
-                        addDataMissign()
-                    } else {
-                        Snackbar.make(view, "Recolección Guardada", Snackbar.LENGTH_SHORT).show()
-                        addRecollectData()
-                        postRecollect()
-                    }
-                } else {
+                if (connected){
+                    if (mBinding.publicarFeed.isChecked) {
+                        if (mBinding.etNombre.text.isNullOrEmpty() || mBinding.etTitulo.text.isNullOrEmpty()) {
+                            addDataMissign()
+                        } else {
+                            Snackbar.make(view, "Recolección Guardada", Snackbar.LENGTH_SHORT)
+                                .show()
+                            addRecollectData()
+                            postRecollect()
+                            }
+                        }
+                     }else {
                     Snackbar.make(view, "Recolección Guardada", Snackbar.LENGTH_SHORT).show()
                     addRecollectData()
                     this.findNavController().popBackStack()
                 }
             }
         }
-
+*/
         val connectedRef =  FirebaseDatabase.getInstance().getReference(".info/connected")
 
         connectedRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val connected = snapshot.getValue(Boolean::class.java) ?: false
-                botonCalcular.setOnClickListener {
-                    if (mBinding.publicarFeed.isChecked && connected == false) {
-                        Snackbar.make(
-                            mBinding.root, "Se perdió la Conexión a Internet, Intente más Tarde",
-                            Snackbar.LENGTH_SHORT
-                        ).show()
+                 botonCalcular.setOnClickListener {
+                    if (mBinding.etCantMaterial.text.isNullOrEmpty() || spinner.selectedItem.equals("-Seleccionar Tipo de Material-")
+                        || mBinding.tvFecha.text.isEmpty() ) {
+                        addDataMissign()
+                    } else {
+                            if (mBinding.publicarFeed.isChecked) {
+
+                                if (connected){
+
+                                    if (mBinding.etNombre.text.isNullOrEmpty() || mBinding.etTitulo.text.isNullOrEmpty()) {
+                                        addDataMissign()
+                                    } else {
+                                        Snackbar.make(
+                                            view,
+                                            "Recolección Guardada",
+                                            Snackbar.LENGTH_SHORT
+                                        )
+                                            .show()
+                                        addRecollectData()
+                                        postRecollect()
+                                    }
+                                }else{
+                                        Snackbar.make(
+                                            view,
+                                            "No hay Conexión a Internet, Intente Más Tarde",
+                                            Snackbar.LENGTH_SHORT
+                                        )
+                                            .show()
+                                }
+                            }
+                        else {
+                            Snackbar.make(view, "Recolección Guardada", Snackbar.LENGTH_SHORT).show()
+                            addRecollectData()
+                            it.findNavController().popBackStack()
+                       }
                     }
-
-                }
-
-            }
+                 }
+              }
 
             override fun onCancelled(error: DatabaseError) {
-                Log.w(TAG, "Listener was cancelled")
+                Log.w(TAG, "Listener Fue Cancelado")
             }
         })
 
