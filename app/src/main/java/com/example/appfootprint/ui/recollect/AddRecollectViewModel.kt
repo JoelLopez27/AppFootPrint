@@ -78,4 +78,6 @@ class AddRecollectViewModel(val recollectRepository: RecollectRepository): ViewM
 
     fun getSizeRows(): LiveData<Int> = recollectRepository.getSizeRows()
 
+    fun getDate(): LiveData<String> = recollectRepository.getDate()
+
 }
