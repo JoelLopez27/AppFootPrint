@@ -31,4 +31,7 @@ interface UserRecollectDao {
     @Query("SELECT count(*) FROM UserRecollect")
     fun getSizeRows(): LiveData<Int>
 
+    @Query("SELECT fecha FROM UserRecollect ORDER BY fecha DESC LIMIT 1")
+    fun getDate(): LiveData<String>
+
 }
