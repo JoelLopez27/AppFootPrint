@@ -6,12 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.appfootprint.databinding.FragmentProfileBinding
+import com.example.appfootprint.db.UserRecollect
 import com.example.appfootprint.ui.recollect.AddRecollectViewModel
 import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
@@ -23,6 +25,7 @@ class ProfileFragment : Fragment() {
     private lateinit var viewModel: AddRecollectViewModel
     var totalMaterial : Double = 0.00
     var totalKgCo2 : Double = 0.0
+    var fecha : String = "Not Found"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,6 +39,10 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = (activity as MainActivity).viewModel2
 
+        mBinding.fab.setOnClickListener {
+            it.findNavController()
+                .navigate(R.id.action_nav_profile_to_nav_home)
+        }
 
             mBinding.tvName.text = FirebaseAuth.getInstance().currentUser?.displayName
             mBinding.tvEmail.text = FirebaseAuth.getInstance().currentUser?.email
@@ -60,6 +67,11 @@ class ProfileFragment : Fragment() {
             mBinding.tvKgdeCO2.text = String.format(requireActivity().getString(R.string.cant_kgco2_profile), "%.2f".format(totalKgCo2))
         })
 
+      viewModel.getDate().observe(viewLifecycleOwner, Observer {
+            fecha = it
+            mBinding.fecha.text =  String.format(requireActivity().getString(R.string.fecha_profile), fecha)
+        })
+
 
         mBinding.fabShow.setOnClickListener {
             if(estadisticasText.visibility == View.GONE){
@@ -82,8 +94,6 @@ class ProfileFragment : Fragment() {
             AuthUI.getInstance().signOut(it)
                 .addOnCompleteListener {
                     Toast.makeText(context, "Hasta Pronto...", Toast.LENGTH_SHORT).show()
-                // findNavController()
-                  //   .navigate(R.id.action_nav_profile_to_nav_home)
                 }
         }
     }
