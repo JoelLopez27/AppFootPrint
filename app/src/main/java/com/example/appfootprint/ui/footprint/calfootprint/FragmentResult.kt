@@ -31,8 +31,16 @@ class FragmentResult : Fragment() {
         viewModel = (activity as MainActivity).viewModel3
 
         viewModel.resultLiveData.observe(viewLifecycleOwner){response->
-            mBinding.cantKilograms.text = response.carbonEquivalent.toString() + " Kg"
+
+            val cantCO2 = response.carbonEquivalent.toDouble()
+            if(cantCO2 == null){
+                mBinding.progressBar.visibility = View.VISIBLE
+            }else{
+                mBinding.progressBar.visibility = View.GONE
+                mBinding.cantKilograms.text = "%.2f".format(cantCO2) + " Kg"
+            }
         }
+
 
 
         mBinding.returnMenu.setOnClickListener {
