@@ -65,15 +65,7 @@ class RecollectFragment : Fragment() {
             recollectAdapter.differ.submitList(recollects)
 
         })
-/*
-       val snackbarCallback = object : Snackbar.Callback() {
-            override fun onDismissed(transientBottomBar: Snackbar?, event: Int) {
-                viewModel.deleteRecollectionData(tempUserRecollect)
-                recollectAdapter.notifyDataSetChanged()
-            }
-            override fun onShown(sb: Snackbar?) {}
-        }
-*/
+
         val itemTouchHelperCallback = object : ItemTouchHelper.SimpleCallback(
             ItemTouchHelper.UP or ItemTouchHelper.DOWN,
             ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT){
