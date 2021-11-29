@@ -18,10 +18,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Calcular Huella de Carbono"
+            android:textColor="@color/white"
             android:textAlignment="center"
             android:textStyle="bold"
             android:textSize="24sp"
-            android:textColor="#C9000000"
             android:paddingBottom="10dp">
         </TextView>
 
@@ -30,6 +30,7 @@
             android:layout_height="wrap_content"
             android:text="Viaje en Carro"
             android:textColor="@color/black"
+            android:textStyle="bold"
             android:textAlignment="center"
             android:textSize="16sp"
             android:paddingBottom="10dp">
