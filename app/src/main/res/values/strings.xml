@@ -13,6 +13,7 @@
     <string name="cant_co2_home">Ayudó al Planeta con %1$s Kg de CO2</string>
     <string name="cant_material_profile">%1$s Kg de Material Recolectado</string>
     <string name="cant_kgco2_profile">%1$s Kg de CO2</string>
+    <string name="fecha_profile">hasta el %1$s</string>
     <string name="menu_home">Home</string>
     <string name="recollection_personal">Recoleción Personal</string>
     <string name="footprint">Huellas de Carbono</string>
