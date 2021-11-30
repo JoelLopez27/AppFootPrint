@@ -32,7 +32,7 @@
     <string name="dont_show_news">No Hay Noticias Guardadas Por Mostrar</string>
     <string name="publicar_text">Publicar Recolección en el Feed</string>
     <string name="top_recolectores">Top Recolectores</string>
-    <string name="top_recolectores_text">Top 3 Recolectores</string>
+    <string name="top_recolectores_text">Top 5 Recolectores</string>
     <string-array name="type_cars">
         <item>-Seleccionar Tipo de Carro-</item>
         <item>SmallDieselCar</item>
