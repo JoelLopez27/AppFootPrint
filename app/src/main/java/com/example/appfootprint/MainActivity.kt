@@ -30,8 +30,6 @@ import com.example.appfootprint.ui.recollect.AddRecollectViewModel
 import com.example.appfootprint.ui.recollect.RecollectViewModelProviderFactory
 import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.nav_header_main.view.*
 import java.util.*
 
@@ -55,29 +53,42 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        Thread.sleep(2000)
-        setTheme(R.style.Theme_AppFootPrint)
+            Thread.sleep(2000)
+            setTheme(R.style.Theme_AppFootPrint)
 
-        mBinding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(mBinding.root)
+            mBinding = ActivityMainBinding.inflate(layoutInflater)
+            setContentView(mBinding.root)
 
-        val resultRepository = ResultRepository()
-        val resultViewModelProviderFactory = ViewModelProviderFactory(resultRepository)
-        viewModel3 = ViewModelProvider(this, resultViewModelProviderFactory).get(ResultViewModel::class.java)
+            val resultRepository = ResultRepository()
+            val resultViewModelProviderFactory = ViewModelProviderFactory(resultRepository)
+        viewModel3 = ViewModelProvider(this,
+            resultViewModelProviderFactory).get(ResultViewModel::class.java)
 
-        val recollectRepository = RecollectRepository(RecollectDatabase(this))
-        val recollectProviderFactory = RecollectViewModelProviderFactory(recollectRepository)
-        viewModel2 = ViewModelProvider(this, recollectProviderFactory).get(AddRecollectViewModel::class.java)
+            val recollectRepository = RecollectRepository(RecollectDatabase(this))
+            val recollectProviderFactory = RecollectViewModelProviderFactory(recollectRepository)
+        viewModel2 = ViewModelProvider(this,
+            recollectProviderFactory).get(AddRecollectViewModel::class.java)
 
-        val newsRepository = NewsRepository(ArticleDatabase(this))
-        val viewModelProviderFactory = BreakingNewsViewModelProviderFactory(application, newsRepository)
-        viewModel = ViewModelProvider(this, viewModelProviderFactory).get(BreakingNewsViewModel::class.java)
+            val newsRepository = NewsRepository(ArticleDatabase(this))
+            val viewModelProviderFactory = BreakingNewsViewModelProviderFactory(application, newsRepository)
+        viewModel = ViewModelProvider(this,
+            viewModelProviderFactory).get(BreakingNewsViewModel::class.java)
 
         setSupportActionBar(mBinding.appBarMain.toolbar)
 
-        val drawerLayout: DrawerLayout = mBinding.drawerLayout
-        val navView: NavigationView = mBinding.navView
-        val navController = findNavController(R.id.nav_host_fragment_content_main)
+            val drawerLayout: DrawerLayout = mBinding.drawerLayout
+            val navView: NavigationView = mBinding.navView
+            val navController = findNavController(R.id.nav_host_fragment_content_main)
+
+        appBarConfiguration = AppBarConfiguration(
+            setOf(R.id.nav_home, R.id.nav_topRecollects, R.id.nav_recollect,
+                R.id.nav_footprint, R.id.nav_news, R.id.nav_savednews, R.id.nav_profile),
+            drawerLayout
+        )
+            setupActionBarWithNavController(navController, appBarConfiguration)
+            navView.setupWithNavController(navController)
+
+        setupAuth()
 
         val headerView : View = navView.getHeaderView(0)
 
@@ -91,54 +102,44 @@ class MainActivity : AppCompatActivity() {
             .centerCrop()
             .into(headerView.imageView)
 
-        appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.nav_home, R.id.nav_topRecollects, R.id.nav_recollect, R.id.nav_footprint, R.id.nav_news, R.id.nav_savednews, R.id.nav_profile), drawerLayout
-        )
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
+        }
 
-       setupAuth()
-
-    }
-
-    private fun setupAuth() {
-        mFirebaseAuth = FirebaseAuth.getInstance()
-        mAuthListener = FirebaseAuth.AuthStateListener {
-            val user = it.currentUser
-            if (user == null) {
-                authResult.launch(
-                    AuthUI.getInstance().createSignInIntentBuilder()
-                        .setIsSmartLockEnabled(false)
-                        .setAvailableProviders(
-                            Arrays.asList(
-                                AuthUI.IdpConfig.EmailBuilder().build(),
-                                AuthUI.IdpConfig.GoogleBuilder().build())
-                        )
-                        .build()
-                )
+        private fun setupAuth() {
+            mFirebaseAuth = FirebaseAuth.getInstance()
+            mAuthListener = FirebaseAuth.AuthStateListener {
+                val user = it.currentUser
+                if (user == null) {
+                    authResult.launch(
+                        AuthUI.getInstance().createSignInIntentBuilder()
+                            .setIsSmartLockEnabled(false)
+                            .setAvailableProviders(
+                                Arrays.asList(
+                                    AuthUI.IdpConfig.EmailBuilder().build(),
+                                    AuthUI.IdpConfig.GoogleBuilder().build())
+                            )
+                            .build()
+                    )
+                }
             }
         }
+
+        override fun onCreateOptionsMenu(menu: Menu): Boolean {
+            menuInflater.inflate(R.menu.main, menu)
+            return true
+        }
+
+        override fun onSupportNavigateUp(): Boolean {
+            val navController = findNavController(R.id.nav_host_fragment_content_main)
+            return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+        }
+
+        override fun onResume() {
+            super.onResume()
+            mFirebaseAuth?.addAuthStateListener (mAuthListener)
+        }
+
+        override fun onPause() {
+            super.onPause()
+            mFirebaseAuth?.removeAuthStateListener (mAuthListener)
+        }
     }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.main, menu)
-        return true
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment_content_main)
-        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        mFirebaseAuth?.addAuthStateListener (mAuthListener)
-    }
-
-    override fun onPause() {
-        super.onPause()
-        mFirebaseAuth?.removeAuthStateListener (mAuthListener)
-    }
-
-
-}
