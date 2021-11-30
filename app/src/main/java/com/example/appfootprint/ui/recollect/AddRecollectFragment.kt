@@ -3,6 +3,7 @@ package com.example.appfootprint.ui.recollect
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.ContentValues.TAG
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
@@ -13,6 +14,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
@@ -116,6 +118,7 @@ class AddRecollectFragment : Fragment() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val connected = snapshot.getValue(Boolean::class.java) ?: false
                  botonCalcular.setOnClickListener {
+                     hideKeyboard()
                     if (mBinding.etCantMaterial.text.isNullOrEmpty() || spinner.selectedItem.equals("-Seleccionar Tipo de Material-")
                         || mBinding.tvFecha.text.isEmpty() ) {
                         addDataMissign()
@@ -279,22 +282,12 @@ class AddRecollectFragment : Fragment() {
         }
     }
 
-    private fun dataSubmitted() {
-        Toast.makeText(requireContext(), "Guardado Exitosamente", Toast.LENGTH_LONG).show()
+    fun Fragment.hideKeyboard() {
+        view?.let { activity?.hideKeyboard(it) }
     }
 
-    private fun dataSubmitFailed() {
-        Toast.makeText(requireContext(), "No se Logro Guardar", Toast.LENGTH_LONG).show()
+    fun Context.hideKeyboard(view: View) {
+        val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
     }
-
-  /*  override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == Activity.RESULT_OK){
-             if (requestCode == RC_GALLERY){
-                 mPhotoSelectedUri = data?.data
-                 mBinding.imgPhoto.setImageURI(mPhotoSelectedUri)
-             }
-        }
-    }  */
-
 }
