@@ -5,10 +5,12 @@
       <map>
         <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/drawable/bmi_circle_background.xml" value="0.22447916666666667" />
         <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/drawable/ic_account.xml" value="0.22447916666666667" />
+        <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/drawable/ic_favorite.xml" value="0.22447916666666667" />
         <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/drawable/ic_home.xml" value="0.22447916666666667" />
         <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/drawable/ic_menu.xml" value="0.13240740740740742" />
         <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/drawable/ic_menu_2.xml" value="0.22447916666666667" />
         <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/drawable/ic_menu_blanco.xml" value="0.22447916666666667" />
+        <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/drawable/ic_thumb_up.xml" value="0.22447916666666667" />
         <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/drawable/menu_back.xml" value="0.1" />
         <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/drawable/menu_back_state.xml" value="0.1" />
         <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/drawable/menu_item_padding.xml" value="0.1" />
@@ -46,7 +48,7 @@
         <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/layout/fragment_view_article.xml" value="0.1" />
         <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/layout/item_cal_options_view.xml" value="0.20833333333333334" />
         <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/layout/item_news_view.xml" value="0.18" />
-        <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/layout/item_recollect_home.xml" value="0.12" />
+        <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/layout/item_recollect_home.xml" value="0.33" />
         <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/layout/list_recollection.xml" value="0.18" />
         <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/layout/list_recollects_co2.xml" value="0.25" />
         <entry key="..\:/Projects_Kotlin/AppFootPrint/app/src/main/res/layout/list_recollects_top.xml" value="0.33" />
