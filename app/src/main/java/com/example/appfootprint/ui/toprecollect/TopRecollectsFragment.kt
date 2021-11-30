@@ -46,7 +46,7 @@ class TopRecollectsFragment : Fragment() {
                 .navigate(R.id.action_nav_topRecollects_to_nav_recollect)
         }
 
-        val query = FirebaseDatabase.getInstance().reference.child("recollects").orderByChild("cantMaterial").limitToLast(3)
+        val query = FirebaseDatabase.getInstance().reference.child("recollects").orderByChild("cantMaterial").limitToLast(5)
         val options = FirebaseRecyclerOptions.Builder<Recollect>().setQuery(query, SnapshotParser {
                 val recollect = it.getValue(Recollect::class.java)
                 recollect!!.id = it.key!!
@@ -89,7 +89,7 @@ class TopRecollectsFragment : Fragment() {
 
         }
 
-        val queryTop = FirebaseDatabase.getInstance().reference.child("recollects").orderByChild("cantC02").limitToLast(3)
+        val queryTop = FirebaseDatabase.getInstance().reference.child("recollects").orderByChild("cantC02").limitToLast(5)
         val optionsTop = FirebaseRecyclerOptions.Builder<Recollect>().setQuery(queryTop, SnapshotParser {
             val recollect = it.getValue(Recollect::class.java)
             recollect!!.id = it.key!!

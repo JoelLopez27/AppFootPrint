@@ -27,32 +27,32 @@ import com.google.firebase.database.FirebaseDatabase
 
 class HomeFragment : Fragment() {
 
-    private lateinit var mBinding: FragmentHomeBinding
-    lateinit var viewModel: AddRecollectViewModel
-    private lateinit var mFirebaseAdapter: FirebaseRecyclerAdapter<Recollect, RecollectHolder>
-    private lateinit var mLayoutManager: RecyclerView.LayoutManager
+        private lateinit var mBinding: FragmentHomeBinding
+        lateinit var viewModel: AddRecollectViewModel
+        private lateinit var mFirebaseAdapter: FirebaseRecyclerAdapter<Recollect, RecollectHolder>
+        private lateinit var mLayoutManager: RecyclerView.LayoutManager
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?): View? {
-        mBinding = FragmentHomeBinding.inflate(inflater, container, false)
-        return mBinding.root
-    }
+        override fun onCreateView(
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?): View? {
+            mBinding = FragmentHomeBinding.inflate(inflater, container, false)
+            return mBinding.root
+        }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+        override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+            super.onViewCreated(view, savedInstanceState)
 
-        val query = FirebaseDatabase.getInstance().reference.child("recollects")
+            val query = FirebaseDatabase.getInstance().reference.child("recollects")
 
-        val options =
-        FirebaseRecyclerOptions.Builder<Recollect>().setQuery(query, SnapshotParser {
-            val recollect = it.getValue(Recollect::class.java)
-            recollect!!.id = it.key!!
-            recollect
-        }).build()
+            val options =
+            FirebaseRecyclerOptions.Builder<Recollect>().setQuery(query, SnapshotParser {
+                val recollect = it.getValue(Recollect::class.java)
+                recollect!!.id = it.key!!
+                recollect
+            }).build()
 
 
-        mFirebaseAdapter = object : FirebaseRecyclerAdapter<Recollect, RecollectHolder>(options){
+            mFirebaseAdapter = object : FirebaseRecyclerAdapter<Recollect, RecollectHolder>(options){
 
             private lateinit var mContext: Context
 
@@ -142,13 +142,13 @@ class HomeFragment : Fragment() {
             }
         }
 
-     inner class RecollectHolder(view: View) : RecyclerView.ViewHolder(view){
-         val binding = ItemRecollectHomeBinding.bind(view)
+         inner class RecollectHolder(view: View) : RecyclerView.ViewHolder(view){
+             val binding = ItemRecollectHomeBinding.bind(view)
 
-            fun setListener(recollect: Recollect){
+                fun setListener(recollect: Recollect){
 
-            binding.cdLike.setOnCheckedChangeListener { compoundButton, checked ->
-                setLike(recollect, checked)
+                binding.cdLike.setOnCheckedChangeListener { compoundButton, checked ->
+                    setLike(recollect, checked)
             }
         }
     }
