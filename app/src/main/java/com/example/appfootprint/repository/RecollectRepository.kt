@@ -16,10 +16,6 @@ class RecollectRepository(
         return db.getRecollectDao().getTotalKgCo2()
     }
 
-    fun updateUserRecollectData(userRecollect: UserRecollect) = db.getRecollectDao().updateUserRecollectData(userRecollect)
-
-    suspend fun getUserRecollectData(id: Int) = db.getRecollectDao().getUserRecollectData(id)
-
     suspend fun insertUserRecollectData(userRecollect: UserRecollect) = db.getRecollectDao().insertUserRecollectData(userRecollect)
 
     fun getSavedRecollect() = db.getRecollectDao().getAll()

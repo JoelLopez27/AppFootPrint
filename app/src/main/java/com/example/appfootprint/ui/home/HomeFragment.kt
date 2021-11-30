@@ -44,8 +44,8 @@ class HomeFragment : Fragment() {
 
             val query = FirebaseDatabase.getInstance().reference.child("recollects")
 
-            val options =
-            FirebaseRecyclerOptions.Builder<Recollect>().setQuery(query, SnapshotParser {
+            val options = FirebaseRecyclerOptions.Builder<Recollect>()
+                .setQuery(query, SnapshotParser {
                 val recollect = it.getValue(Recollect::class.java)
                 recollect!!.id = it.key!!
                 recollect

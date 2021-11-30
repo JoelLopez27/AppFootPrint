@@ -42,7 +42,6 @@ class AddRecollectFragment : Fragment() {
     lateinit var viewModel: AddRecollectViewModel
     private var mPhotoSelectedUri: Uri? = null
     private var PATH_RECOLLECT = "recollects"
-    private var actionUpdate: Boolean = false
     private var material: String = "Papel"
 
     companion object{
@@ -54,7 +53,6 @@ class AddRecollectFragment : Fragment() {
 
                 mPhotoSelectedUri = it.data?.data
                 mBinding.imgPhoto.setImageURI(mPhotoSelectedUri)
-
         }
     }
 
@@ -205,9 +203,13 @@ class AddRecollectFragment : Fragment() {
                     Snackbar.make(mBinding.root, "Recoleción Publicada",
                         Snackbar.LENGTH_SHORT).show()
                     it.storage.downloadUrl.addOnSuccessListener {
-                        saveRecollect(key, it.toString(), mBinding.etTitulo.text.toString().trim(),
-                            mBinding.etNombre.text.toString().trim(), mBinding.tvFecha.text.toString().trim(),
-                            cantMaterial.toDouble(), material, viewModel.calculateRecollect(cantMaterial.toDouble(), material))
+                        saveRecollect(key, it.toString(),
+                            mBinding.etTitulo.text.toString().trim(),
+                            mBinding.etNombre.text.toString().trim(),
+                            mBinding.tvFecha.text.toString().trim(),
+                            cantMaterial.toDouble(),
+                            material,
+                            viewModel.calculateRecollect(cantMaterial.toDouble(), material))
                         mBinding.feedContainer.visibility = View.GONE
                         this.findNavController().popBackStack()
                     }
@@ -220,74 +222,73 @@ class AddRecollectFragment : Fragment() {
 
       }
 
-    private fun saveRecollect(key: String, url: String, title: String, name: String,
-                                date: String, cantMaterial: Double, typeMaterial:String,
-                                cantCo2:Double) {
-        val recollect = Recollect(title = title, photoUrl = url, name = name, date = date,
-                                    cantMaterial = cantMaterial, typeMaterial = typeMaterial,
-                                    cantC02 = cantCo2)
+        private fun saveRecollect(key: String, url: String, title: String, name: String,
+                                    date: String, cantMaterial: Double, typeMaterial:String,
+                                    cantCo2:Double) {
+            val recollect = Recollect(title = title, photoUrl = url, name = name, date = date,
+                                        cantMaterial = cantMaterial, typeMaterial = typeMaterial,
+                                        cantC02 = cantCo2)
 
-        mDatabaseReference.child(key).setValue(recollect)
-    }
+            mDatabaseReference.child(key).setValue(recollect)
+        }
 
-    private fun addDataMissign() {
-        AlertDialog.Builder(requireContext())
-            .setMessage("Ingresar Datos Faltantes")
-            .setPositiveButton("OK", (DialogInterface.OnClickListener { _, _ -> }))
-            .show()
-    }
+        private fun addDataMissign() {
+            AlertDialog.Builder(requireContext())
+                .setMessage("Ingresar Datos Faltantes")
+                .setPositiveButton("OK", (DialogInterface.OnClickListener { _, _ -> }))
+                .show()
+        }
 
-    private fun addRecollectData() {
-        val cantMaterial = etCantMaterial.text.toString()
-        val userRecollect = UserRecollect(
-            null,
-            material,
-            cantMaterial.toDouble(),
-            tvFecha.text.toString(),
-            viewModel.calculateRecollect(cantMaterial.toDouble(), material)
-        )
-       viewModel.insertRecollectData(userRecollect)
+        private fun addRecollectData() {
+            val cantMaterial = etCantMaterial.text.toString()
+            val userRecollect = UserRecollect(
+                null,
+                material,
+                cantMaterial.toDouble(),
+                tvFecha.text.toString(),
+                viewModel.calculateRecollect(cantMaterial.toDouble(), material)
+            )
+           viewModel.insertRecollectData(userRecollect)
+        }
 
-    }
+        private fun bindAllViews() {
+            val adapter: ArrayAdapter<CharSequence> = ArrayAdapter.createFromResource(requireContext(),
+                R.array.type_Material,
+                android.R.layout.simple_spinner_dropdown_item)
+            spinner.adapter = adapter
 
-    private fun bindAllViews() {
-        val adapter: ArrayAdapter<CharSequence> = ArrayAdapter.createFromResource(requireContext(),
-            R.array.type_Material,
-            android.R.layout.simple_spinner_dropdown_item)
-        spinner.adapter = adapter
+            etCantMaterial
+            tvFecha.text
+        }
 
-        etCantMaterial
-        tvFecha.text
-    }
+        private fun selectDate() {
+            mBinding.apply {
+                    // Crea Nueva Instancia de DatePickerFragment
+                    val datePickerFragment = DatePickerFragment()
+                    val supportFragmentManager = requireActivity().supportFragmentManager
 
-    private fun selectDate() {
-        mBinding.apply {
-                // Crea Nueva Instancia de DatePickerFragment
-                val datePickerFragment = DatePickerFragment()
-                val supportFragmentManager = requireActivity().supportFragmentManager
-
-                // Implementamos setFragmentResultListener
-                supportFragmentManager.setFragmentResultListener(
-                    "REQUEST_KEY",
-                    viewLifecycleOwner
-                ) { resultKey, bundle ->
-                    if (resultKey == "REQUEST_KEY") {
-                        val date = bundle.getString("SELECTED_DATE")
-                        tvFecha.text = date
-                        mBinding.tvselectFecha.visibility = View.VISIBLE
+                    // Implementamos setFragmentResultListener
+                    supportFragmentManager.setFragmentResultListener(
+                        "REQUEST_KEY",
+                        viewLifecycleOwner
+                    ) { resultKey, bundle ->
+                        if (resultKey == "REQUEST_KEY") {
+                            val date = bundle.getString("SELECTED_DATE")
+                            tvFecha.text = date
+                            mBinding.tvselectFecha.visibility = View.VISIBLE
+                        }
                     }
-                }
-                // show
-                datePickerFragment.show(supportFragmentManager, "DatePickerFragment")
+                    // show
+                    datePickerFragment.show(supportFragmentManager, "DatePickerFragment")
+            }
+        }
+
+        fun Fragment.hideKeyboard() {
+            view?.let { activity?.hideKeyboard(it) }
+        }
+
+        fun Context.hideKeyboard(view: View) {
+            val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+            inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
         }
     }
-
-    fun Fragment.hideKeyboard() {
-        view?.let { activity?.hideKeyboard(it) }
-    }
-
-    fun Context.hideKeyboard(view: View) {
-        val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-        inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
-    }
-}

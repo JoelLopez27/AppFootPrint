@@ -22,9 +22,9 @@ class ProfileFragment : Fragment() {
 
     private lateinit var mBinding: FragmentProfileBinding
     private lateinit var viewModel: AddRecollectViewModel
-    var totalMaterial : Double = 0.00
-    var totalKgCo2 : Double = 0.0
-    var fecha : String = "Not Found"
+    var totalMaterial : Double? = 0.00
+    var totalKgCo2 : Double? = 0.0
+    var fecha : String? = "Not Found"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -71,22 +71,26 @@ class ProfileFragment : Fragment() {
         viewModel.getCountMaterial().observe(viewLifecycleOwner, Observer {
             totalMaterial = it
 
-            mBinding.tvcantMaterial.text = String.format(requireActivity().getString(R.string.cant_material_profile), "%.2f".format(totalMaterial))
+            mBinding.tvcantMaterial.text = String.format(requireActivity()
+                .getString(R.string.cant_material_profile), "%.2f".format(totalMaterial))
             })
 
         viewModel.getCountKgCo2().observe(viewLifecycleOwner, Observer {
             totalKgCo2 = it
 
-            mBinding.tvKgdeCO2.text = String.format(requireActivity().getString(R.string.cant_kgco2_profile), "%.2f".format(totalKgCo2))
+            mBinding.tvKgdeCO2.text = String.format(requireActivity()
+                .getString(R.string.cant_kgco2_profile), "%.2f".format(totalKgCo2))
             })
 
         viewModel.getDate().observe(viewLifecycleOwner, Observer {
             fecha = it
-            mBinding.fecha.text =  String.format(requireActivity().getString(R.string.fecha_profile), fecha)
+            mBinding.fecha.text =  String.format(requireActivity()
+                .getString(R.string.fecha_profile), fecha)
             })
 
 
         mBinding.fabShow.setOnClickListener {
+
             if(estadisticasText.visibility == View.GONE){
                 mBinding.estadisticasText.visibility = View.VISIBLE
                 mBinding.tvcantMaterial.visibility = View.VISIBLE

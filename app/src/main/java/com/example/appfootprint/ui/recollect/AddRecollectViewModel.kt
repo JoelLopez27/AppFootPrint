@@ -51,18 +51,6 @@ class AddRecollectViewModel(val recollectRepository: RecollectRepository): ViewM
         }
     }
 
-    fun updateRecollectData(userRecollect: UserRecollect) {
-        viewModelScope.launch {
-            recollectRepository.updateUserRecollectData(userRecollect)
-        }
-    }
-
-    fun fetchRecollectData(id: Int) {
-        viewModelScope.launch {
-            recollectRepository.getUserRecollectData(id)
-        }
-    }
-
    fun getSavedRecollect() = recollectRepository.getSavedRecollect()
 
 

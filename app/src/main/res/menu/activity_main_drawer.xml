@@ -39,11 +39,6 @@
                     android:icon="@drawable/ic_person"
                     android:id="@+id/nav_profile">
                 </item>
-                <item
-                    android:title="Información"
-                    android:icon="@drawable/ic_support"
-                    android:id="@+id/support">
-                </item>
 
             </group>
 

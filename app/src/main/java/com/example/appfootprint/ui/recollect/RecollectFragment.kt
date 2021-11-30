@@ -43,7 +43,6 @@ class RecollectFragment : Fragment() {
 
         setupRecyclerView()
 
-       // bindAllView()
 
         viewModel.getSizeRows().observe(viewLifecycleOwner, Observer {
             totalRows = it
