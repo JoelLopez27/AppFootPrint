@@ -23,8 +23,6 @@ class BreakingNewsFragment : Fragment() {
     lateinit var newsAdapter: NewsAdapter
     private lateinit var mBinding: FragmentBreakingNewsBinding
 
-    val TAG = "BreakingNewsFragment"
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
