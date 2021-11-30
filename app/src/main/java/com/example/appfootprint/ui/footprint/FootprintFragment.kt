@@ -64,9 +64,5 @@ class FootprintFragment : Fragment() {
             it.findNavController().navigate(
                 R.id.action_nav_footprint_to_treesEquivalentFragment)
         }
-
-
-
     }
-
 }

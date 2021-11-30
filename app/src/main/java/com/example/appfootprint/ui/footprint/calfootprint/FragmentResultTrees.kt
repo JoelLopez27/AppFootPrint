@@ -41,9 +41,5 @@ class FragmentResultTrees : Fragment() {
         mBinding.returnOptions.setOnClickListener {
             this.findNavController().popBackStack()
         }
-
-
     }
-
-
 }

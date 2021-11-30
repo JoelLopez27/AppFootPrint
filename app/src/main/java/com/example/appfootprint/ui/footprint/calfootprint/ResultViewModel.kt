@@ -42,5 +42,4 @@ class ResultViewModel(
         val response = resultRepository.getResultTrees(peso, unidad)
         resultLiveData.postValue(response)
     }
-
 }

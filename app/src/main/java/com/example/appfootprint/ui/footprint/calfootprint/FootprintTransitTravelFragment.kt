@@ -53,5 +53,4 @@ class FootprintTransitTravelFragment : Fragment() {
             }
         }
     }
-
 }

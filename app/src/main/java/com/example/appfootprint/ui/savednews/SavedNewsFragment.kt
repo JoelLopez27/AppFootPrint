@@ -97,15 +97,13 @@ class savedNewsFragment : Fragment() {
         ItemTouchHelper(itemTouchHelperCallback).apply {
             attachToRecyclerView(rvsavedNews)
         }
-    }
+     }
 
-    private fun setupRecyclerView(){
-        newsAdapter = NewsAdapter()
-        rvsavedNews.apply {
-            adapter = newsAdapter
-            layoutManager = LinearLayoutManager(activity)
+        private fun setupRecyclerView(){
+            newsAdapter = NewsAdapter()
+            rvsavedNews.apply {
+                adapter = newsAdapter
+                layoutManager = LinearLayoutManager(activity)
+            }
         }
     }
-
-
-}

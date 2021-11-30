@@ -13,7 +13,7 @@ import androidx.room.RoomDatabase
 
 abstract class RecollectDatabase : RoomDatabase() {
 
-        abstract fun getRecollectDao(): UserRecollectDao
+       abstract fun getRecollectDao(): UserRecollectDao
 
        companion object{
                 @Volatile
@@ -22,7 +22,7 @@ abstract class RecollectDatabase : RoomDatabase() {
 
                 operator fun invoke(context: Context) = instance ?: synchronized(LOCK){
                  instance ?: createDatabase(context).also { instance = it}
-        }
+                }
 
                  private fun createDatabase(context: Context) =
                      Room.databaseBuilder(
@@ -30,5 +30,5 @@ abstract class RecollectDatabase : RoomDatabase() {
                      RecollectDatabase::class.java,
                         "recollect_db.db"
                      ).build()
-        }
-}
+                 }
+            }

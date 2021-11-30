@@ -17,32 +17,31 @@ import kotlinx.android.synthetic.main.fragment_view_article.*
 
 class ViewArticleFragment : Fragment() {
 
-    lateinit var viewModel: BreakingNewsViewModel
-    private lateinit var mBinding: FragmentViewArticleBinding
-    val args: ViewArticleFragmentArgs by navArgs()
+        lateinit var viewModel: BreakingNewsViewModel
+        private lateinit var mBinding: FragmentViewArticleBinding
+        val args: ViewArticleFragmentArgs by navArgs()
 
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?): View? {
-        mBinding = FragmentViewArticleBinding.inflate(inflater, container, false)
-        return mBinding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        viewModel = (activity as MainActivity).viewModel
-
-        val article = args.article
-        webView.apply {
-            webViewClient = WebViewClient()
-            loadUrl(article.url)
+        override fun onCreateView(
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?): View? {
+            mBinding = FragmentViewArticleBinding.inflate(inflater, container, false)
+            return mBinding.root
         }
 
-        fab.setOnClickListener {
-            viewModel.saveArticle(article)
-            Snackbar.make(view, "Noticia Guardada", Snackbar.LENGTH_SHORT).show()
+        override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+            super.onViewCreated(view, savedInstanceState)
+            viewModel = (activity as MainActivity).viewModel
+
+            val article = args.article
+            webView.apply {
+                webViewClient = WebViewClient()
+                loadUrl(article.url)
+            }
+
+            fab.setOnClickListener {
+                viewModel.saveArticle(article)
+                Snackbar.make(view, "Noticia Guardada", Snackbar.LENGTH_SHORT).show()
+            }
         }
     }
-
-}

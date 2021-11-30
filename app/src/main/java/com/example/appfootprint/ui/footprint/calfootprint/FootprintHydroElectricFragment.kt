@@ -53,6 +53,5 @@ class FootprintHydroElectricFragment : Fragment() {
                 Toast.makeText(activity, "Ingresar Dato Faltante", Toast.LENGTH_SHORT).show()
             }
         }
-
     }
 }

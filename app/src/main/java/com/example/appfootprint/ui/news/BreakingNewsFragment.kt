@@ -19,70 +19,71 @@ import kotlinx.android.synthetic.main.fragment_breaking_news.*
 
 class BreakingNewsFragment : Fragment() {
 
-    lateinit var viewModel: BreakingNewsViewModel
-    lateinit var newsAdapter: NewsAdapter
-    private lateinit var mBinding: FragmentBreakingNewsBinding
+        lateinit var viewModel: BreakingNewsViewModel
+        lateinit var newsAdapter: NewsAdapter
+        private lateinit var mBinding: FragmentBreakingNewsBinding
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?): View? {
-        mBinding = FragmentBreakingNewsBinding.inflate(inflater, container, false)
+        override fun onCreateView(
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?): View? {
+            mBinding = FragmentBreakingNewsBinding.inflate(inflater, container, false)
 
-        return mBinding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        viewModel = (activity as MainActivity).viewModel
-        setupRecyclerView()
-
-        mBinding.fab.setOnClickListener {
-            it.findNavController()
-                .navigate(R.id.action_nav_news_to_nav_recollect)
+            return mBinding.root
         }
 
-        newsAdapter.setOnItemClickListener {
-            val bundle = Bundle().apply {
-                putSerializable("article", it)
+        override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+            super.onViewCreated(view, savedInstanceState)
+            viewModel = (activity as MainActivity).viewModel
+            setupRecyclerView()
+
+            mBinding.fab.setOnClickListener {
+                it.findNavController()
+                    .navigate(R.id.action_nav_news_to_nav_recollect)
             }
-            findNavController().navigate(
-                R.id.action_nav_news_to_viewArticleFragment,bundle)
-        }
 
-        viewModel.breakingNews.observe(viewLifecycleOwner, Observer { response ->
-            when(response){
-                is Resource.Success -> {
-                    hideProgressBar()
-                    response.data?.let { newsResponse ->
-                        newsAdapter.differ.submitList(newsResponse.articles)
+            newsAdapter.setOnItemClickListener {
+                val bundle = Bundle().apply {
+                    putSerializable("article", it)
+                }
+                findNavController().navigate(
+                    R.id.action_nav_news_to_viewArticleFragment,bundle)
+            }
+
+            viewModel.breakingNews.observe(viewLifecycleOwner, Observer { response ->
+                when(response){
+                    is Resource.Success -> {
+                        hideProgressBar()
+                        response.data?.let { newsResponse ->
+                            newsAdapter.differ.submitList(newsResponse.articles)
+                        }
+                    }
+                    is Resource.Error -> {
+                        hideProgressBar()
+                        response.message?.let { message ->
+                           Toast.makeText(activity, "Ha ocurrido un error: $message",
+                               Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                    is Resource.Loading -> {
+                        showProgressBar()
                     }
                 }
-                is Resource.Error -> {
-                    hideProgressBar()
-                    response.message?.let { message ->
-                       Toast.makeText(activity, "Ha ocurrido un error: $message", Toast.LENGTH_SHORT).show()
-                    }
-                }
-                is Resource.Loading -> {
-                    showProgressBar()
-                }
+            })
+        }
+
+        private fun hideProgressBar(){
+            newsProgressBar.visibility = View.INVISIBLE
+        }
+
+        private fun showProgressBar(){
+            newsProgressBar.visibility = View.VISIBLE
+        }
+
+        private fun setupRecyclerView(){
+            newsAdapter = NewsAdapter()
+            rvUltimasNoticias.apply {
+                adapter = newsAdapter
+                layoutManager = LinearLayoutManager(activity)
             }
-        })
-    }
-
-    private fun hideProgressBar(){
-        newsProgressBar.visibility = View.INVISIBLE
-    }
-
-    private fun showProgressBar(){
-        newsProgressBar.visibility = View.VISIBLE
-    }
-
-    private fun setupRecyclerView(){
-        newsAdapter = NewsAdapter()
-        rvUltimasNoticias.apply {
-            adapter = newsAdapter
-            layoutManager = LinearLayoutManager(activity)
         }
     }
-}

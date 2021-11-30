@@ -70,14 +70,6 @@ class AddRecollectFragment : Fragment() {
 
         bindAllViews()
 
-        mBinding.publicarFeed.setOnCheckedChangeListener { button, b ->
-            if (mBinding.publicarFeed.isChecked) {
-                mBinding.feedContainer.visibility = View.VISIBLE
-            } else {
-                mBinding.feedContainer.visibility = View.GONE
-            }
-        }
-
         mBinding.btnSelect.setOnClickListener {
             openGallery()
         }
@@ -85,210 +77,194 @@ class AddRecollectFragment : Fragment() {
         botonDate.setOnClickListener {
             selectDate()
         }
-/*
-       botonCalcular.setOnClickListener {
-            if (mBinding.etCantMaterial.text.isNullOrEmpty() || spinner.selectedItem.equals("-Seleccionar Tipo de Material-")
-                || mBinding.tvFecha.text.isEmpty() ) {
-                addDataMissign()
-            } else {
-                if (connected){
-                    if (mBinding.publicarFeed.isChecked) {
-                        if (mBinding.etNombre.text.isNullOrEmpty() || mBinding.etTitulo.text.isNullOrEmpty()) {
-                            addDataMissign()
+
+             botonCalcular.setOnClickListener {
+                    hideKeyboard()
+                    if (mBinding.etCantMaterial.text.isNullOrEmpty() || spinner.selectedItem.equals(
+                            "-Seleccionar Tipo de Material-") || mBinding.tvFecha.text.isEmpty()) {
+                        addDataMissign()
+                    } else {
+                        if (mBinding.publicarFeed.isChecked) {
+
+                            if (mBinding.etNombre.text.isNullOrEmpty() || mBinding.etTitulo.text.isNullOrEmpty()) {
+                                addDataMissign()
+                            } else {
+                                Snackbar.make(
+                                    view,
+                                    "Recolección Guardada",
+                                    Snackbar.LENGTH_SHORT
+                                )
+                                    .show()
+                                addRecollectData()
+                                postRecollect()
+                            }
                         } else {
                             Snackbar.make(view, "Recolección Guardada", Snackbar.LENGTH_SHORT)
                                 .show()
                             addRecollectData()
-                            postRecollect()
-                            }
-                        }
-                     }else {
-                    Snackbar.make(view, "Recolección Guardada", Snackbar.LENGTH_SHORT).show()
-                    addRecollectData()
-                    this.findNavController().popBackStack()
-                }
-            }
-        }
-*/
-        val connectedRef =  FirebaseDatabase.getInstance().getReference(".info/connected")
-
-        connectedRef.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val connected = snapshot.getValue(Boolean::class.java) ?: false
-                 botonCalcular.setOnClickListener {
-                     hideKeyboard()
-                    if (mBinding.etCantMaterial.text.isNullOrEmpty() || spinner.selectedItem.equals("-Seleccionar Tipo de Material-")
-                        || mBinding.tvFecha.text.isEmpty() ) {
-                        addDataMissign()
-                    } else {
-                            if (mBinding.publicarFeed.isChecked) {
-
-                                if (connected){
-
-                                    if (mBinding.etNombre.text.isNullOrEmpty() || mBinding.etTitulo.text.isNullOrEmpty()) {
-                                        addDataMissign()
-                                    } else {
-                                        Snackbar.make(
-                                            view,
-                                            "Recolección Guardada",
-                                            Snackbar.LENGTH_SHORT
-                                        )
-                                            .show()
-                                        addRecollectData()
-                                        postRecollect()
-                                    }
-                                }else{
-                                        Snackbar.make(
-                                            view,
-                                            "No hay Conexión a Internet, Intente Más Tarde",
-                                            Snackbar.LENGTH_SHORT
-                                        )
-                                            .show()
-                                }
-                            }
-                        else {
-                            Snackbar.make(view, "Recolección Guardada", Snackbar.LENGTH_SHORT).show()
-                            addRecollectData()
                             it.findNavController().popBackStack()
-                       }
+                        }
                     }
-                 }
-              }
+                }
 
-            override fun onCancelled(error: DatabaseError) {
-                Log.w(TAG, "Listener Fue Cancelado")
-            }
-        })
 
-        mStorageReference = FirebaseStorage.getInstance().reference
-        mDatabaseReference = FirebaseDatabase.getInstance().reference.child(PATH_RECOLLECT)
 
-        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            val connectedRef =  FirebaseDatabase.getInstance().getReference(".info/connected")
+
+            connectedRef.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val connected = snapshot.getValue(Boolean::class.java) ?: false
+
+                    mBinding.publicarFeed.setOnCheckedChangeListener { button, b ->
+
+                        if (mBinding.publicarFeed.isChecked) {
+                            if (!connected) {
+                                Snackbar.make(
+                                    view,
+                                    "No hay Conexión a Internet, Revise su Conexión",
+                                    Snackbar.LENGTH_SHORT
+                                )
+                                    .show()
+                            }
+                            mBinding.feedContainer.visibility = View.VISIBLE
+                        }else{
+                            mBinding.feedContainer.visibility = View.GONE
+                        }
+                    }
+
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    Log.w(TAG, "Listener Fue Cancelado")
+                }
+            })
+
+
+            mStorageReference = FirebaseStorage.getInstance().reference
+            mDatabaseReference = FirebaseDatabase.getInstance().reference.child(PATH_RECOLLECT)
+
+            spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
 
             override fun onItemSelected(arg0: AdapterView<*>, arg1: View?, arg2: Int, arg3: Long) {
                 val selectedItem = spinner.selectedItem.toString()
                 material = selectedItem
             }
             override fun onNothingSelected(arg0: AdapterView<*>) {
+               }
             }
+         }
+
+        private fun openGallery() {
+            val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+            galleryResult.launch(intent)
         }
 
-
-
-    }
-
-    private fun openGallery() {
-        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-        galleryResult.launch(intent)
-    }
-
-    private fun postRecollect() {
-        mBinding.progressBar.visibility = View.VISIBLE
-        val key = mDatabaseReference.push().key!!
-        val cantMaterial = etCantMaterial.text.toString()
-        val storageReference = mStorageReference.child(PATH_RECOLLECT)
-                        .child(FirebaseAuth.getInstance().currentUser!!.uid).child(key)
-        if (mPhotoSelectedUri != null) {
-            storageReference.putFile(mPhotoSelectedUri!!)
-                .addOnProgressListener {
-                    val process = (100 * it.bytesTransferred/it.totalByteCount).toDouble()
-                    mBinding.progressBar.progress = process.toInt()
-                    mBinding.progressPorcentage.visibility = View.VISIBLE
-                    mBinding.progressPorcentage.text = "$process%"
-                }
-                .addOnCompleteListener {
-                    mBinding.progressBar.visibility = View.INVISIBLE
-                }
-                .addOnSuccessListener {
-                    Snackbar.make(mBinding.root, "Recoleción Publicada",
-                        Snackbar.LENGTH_SHORT).show()
-                    it.storage.downloadUrl.addOnSuccessListener {
-                        saveRecollect(key, it.toString(),
-                            mBinding.etTitulo.text.toString().trim(),
-                            mBinding.etNombre.text.toString().trim(),
-                            mBinding.tvFecha.text.toString().trim(),
-                            cantMaterial.toDouble(),
-                            material,
-                            viewModel.calculateRecollect(cantMaterial.toDouble(), material))
-                        mBinding.feedContainer.visibility = View.GONE
-                        this.findNavController().popBackStack()
-                    }
-                }
-                .addOnFailureListener {
-                    Snackbar.make(mBinding.root, "No se ha logrado Publicarlo, Intentelo más tarde",
-                        Snackbar.LENGTH_SHORT).show()
-                }
-            }
-
-      }
-
-        private fun saveRecollect(key: String, url: String, title: String, name: String,
-                                    date: String, cantMaterial: Double, typeMaterial:String,
-                                    cantCo2:Double) {
-            val recollect = Recollect(title = title, photoUrl = url, name = name, date = date,
-                                        cantMaterial = cantMaterial, typeMaterial = typeMaterial,
-                                        cantC02 = cantCo2)
-
-            mDatabaseReference.child(key).setValue(recollect)
-        }
-
-        private fun addDataMissign() {
-            AlertDialog.Builder(requireContext())
-                .setMessage("Ingresar Datos Faltantes")
-                .setPositiveButton("OK", (DialogInterface.OnClickListener { _, _ -> }))
-                .show()
-        }
-
-        private fun addRecollectData() {
+        private fun postRecollect() {
+            mBinding.progressBar.visibility = View.VISIBLE
+            val key = mDatabaseReference.push().key!!
             val cantMaterial = etCantMaterial.text.toString()
-            val userRecollect = UserRecollect(
-                null,
-                material,
-                cantMaterial.toDouble(),
-                tvFecha.text.toString(),
-                viewModel.calculateRecollect(cantMaterial.toDouble(), material)
-            )
-           viewModel.insertRecollectData(userRecollect)
-        }
-
-        private fun bindAllViews() {
-            val adapter: ArrayAdapter<CharSequence> = ArrayAdapter.createFromResource(requireContext(),
-                R.array.type_Material,
-                android.R.layout.simple_spinner_dropdown_item)
-            spinner.adapter = adapter
-
-            etCantMaterial
-            tvFecha.text
-        }
-
-        private fun selectDate() {
-            mBinding.apply {
-                    // Crea Nueva Instancia de DatePickerFragment
-                    val datePickerFragment = DatePickerFragment()
-                    val supportFragmentManager = requireActivity().supportFragmentManager
-
-                    // Implementamos setFragmentResultListener
-                    supportFragmentManager.setFragmentResultListener(
-                        "REQUEST_KEY",
-                        viewLifecycleOwner
-                    ) { resultKey, bundle ->
-                        if (resultKey == "REQUEST_KEY") {
-                            val date = bundle.getString("SELECTED_DATE")
-                            tvFecha.text = date
-                            mBinding.tvselectFecha.visibility = View.VISIBLE
+            val storageReference = mStorageReference.child(PATH_RECOLLECT)
+                            .child(FirebaseAuth.getInstance().currentUser!!.uid).child(key)
+            if (mPhotoSelectedUri != null) {
+                storageReference.putFile(mPhotoSelectedUri!!)
+                    .addOnProgressListener {
+                        val process = (100 * it.bytesTransferred/it.totalByteCount).toDouble()
+                        mBinding.progressBar.progress = process.toInt()
+                        mBinding.progressPorcentage.visibility = View.VISIBLE
+                        mBinding.progressPorcentage.text = "$process%"
+                    }
+                    .addOnCompleteListener {
+                        mBinding.progressBar.visibility = View.INVISIBLE
+                    }
+                    .addOnSuccessListener {
+                        Snackbar.make(mBinding.root, "Recoleción Publicada",
+                            Snackbar.LENGTH_SHORT).show()
+                        it.storage.downloadUrl.addOnSuccessListener {
+                            saveRecollect(key, it.toString(),
+                                mBinding.etTitulo.text.toString().trim(),
+                                mBinding.etNombre.text.toString().trim(),
+                                mBinding.tvFecha.text.toString().trim(),
+                                cantMaterial.toDouble(),
+                                material,
+                                viewModel.calculateRecollect(cantMaterial.toDouble(), material))
+                            mBinding.feedContainer.visibility = View.GONE
+                            this.findNavController().popBackStack()
                         }
                     }
-                    // show
-                    datePickerFragment.show(supportFragmentManager, "DatePickerFragment")
+                    .addOnFailureListener {
+                        Snackbar.make(mBinding.root, "No se ha logrado Publicarlo, Intentelo más tarde",
+                            Snackbar.LENGTH_SHORT).show()
+                     }
+                 }
+             }
+
+            private fun saveRecollect(key: String, url: String, title: String, name: String,
+                                        date: String, cantMaterial: Double, typeMaterial:String,
+                                        cantCo2:Double) {
+                val recollect = Recollect(title = title, photoUrl = url, name = name, date = date,
+                                            cantMaterial = cantMaterial, typeMaterial = typeMaterial,
+                                            cantC02 = cantCo2)
+
+                mDatabaseReference.child(key).setValue(recollect)
+            }
+
+            private fun addDataMissign() {
+                AlertDialog.Builder(requireContext())
+                    .setMessage("Ingresar Datos Faltantes")
+                    .setPositiveButton("OK", (DialogInterface.OnClickListener { _, _ -> }))
+                    .show()
+            }
+
+            private fun addRecollectData() {
+                val cantMaterial = etCantMaterial.text.toString()
+                val userRecollect = UserRecollect(
+                    null,
+                    material,
+                    cantMaterial.toDouble(),
+                    tvFecha.text.toString(),
+                    viewModel.calculateRecollect(cantMaterial.toDouble(), material)
+                )
+               viewModel.insertRecollectData(userRecollect)
+            }
+
+            private fun bindAllViews() {
+                val adapter: ArrayAdapter<CharSequence> = ArrayAdapter.createFromResource(requireContext(),
+                    R.array.type_Material,
+                    android.R.layout.simple_spinner_dropdown_item)
+                spinner.adapter = adapter
+
+                etCantMaterial
+                tvFecha.text
+            }
+
+            private fun selectDate() {
+                mBinding.apply {
+                        // Crea Nueva Instancia de DatePickerFragment
+                        val datePickerFragment = DatePickerFragment()
+                        val supportFragmentManager = requireActivity().supportFragmentManager
+
+                        // Implementamos setFragmentResultListener
+                        supportFragmentManager.setFragmentResultListener(
+                            "REQUEST_KEY",
+                            viewLifecycleOwner
+                        ) { resultKey, bundle ->
+                            if (resultKey == "REQUEST_KEY") {
+                                val date = bundle.getString("SELECTED_DATE")
+                                tvFecha.text = date
+                                mBinding.tvselectFecha.visibility = View.VISIBLE
+                            }
+                          }
+                        // show
+                        datePickerFragment.show(supportFragmentManager, "DatePickerFragment")
+                    }
+                  }
+
+            fun Fragment.hideKeyboard() {
+                view?.let { activity?.hideKeyboard(it) }
+            }
+
+            fun Context.hideKeyboard(view: View) {
+                val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+                inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
             }
         }
-
-        fun Fragment.hideKeyboard() {
-            view?.let { activity?.hideKeyboard(it) }
-        }
-
-        fun Context.hideKeyboard(view: View) {
-            val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-            inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
-        }
-    }

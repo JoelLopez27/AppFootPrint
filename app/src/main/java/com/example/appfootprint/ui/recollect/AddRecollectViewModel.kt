@@ -40,32 +40,32 @@ class AddRecollectViewModel(val recollectRepository: RecollectRepository): ViewM
             }
             else -> {
                 return (0).toDouble()
+                }
+             }
+            return totalKg
+        }
+
+        fun insertRecollectData(userRecollect: UserRecollect) {
+            viewModelScope.launch {
+                recollectRepository.insertUserRecollectData(userRecollect)
             }
         }
-            return totalKg
-    }
 
-    fun insertRecollectData(userRecollect: UserRecollect) {
-        viewModelScope.launch {
-            recollectRepository.insertUserRecollectData(userRecollect)
+        fun getSavedRecollect() = recollectRepository.getSavedRecollect()
+
+
+        fun deleteRecollectionData(userRecollect: UserRecollect) {
+            viewModelScope.launch {
+                recollectRepository.deleteRecollect(userRecollect)
+            }
         }
-    }
 
-   fun getSavedRecollect() = recollectRepository.getSavedRecollect()
+        fun getCountMaterial(): LiveData<Double> = recollectRepository.getTotalMaterial()
 
+        fun getCountKgCo2(): LiveData<Double> = recollectRepository.getTotalKgCo2()
 
-    fun deleteRecollectionData(userRecollect: UserRecollect) {
-        viewModelScope.launch {
-            recollectRepository.deleteRecollect(userRecollect)
-        }
-    }
+        fun getSizeRows(): LiveData<Int> = recollectRepository.getSizeRows()
 
-    fun getCountMaterial(): LiveData<Double> = recollectRepository.getTotalMaterial()
-
-    fun getCountKgCo2(): LiveData<Double> = recollectRepository.getTotalKgCo2()
-
-    fun getSizeRows(): LiveData<Int> = recollectRepository.getSizeRows()
-
-    fun getDate(): LiveData<String> = recollectRepository.getDate()
+        fun getDate(): LiveData<String> = recollectRepository.getDate()
 
 }

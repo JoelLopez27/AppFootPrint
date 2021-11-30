@@ -103,5 +103,4 @@ class RecollectFragment : Fragment() {
             layoutManager = LinearLayoutManager(activity)
         }
     }
-
 }

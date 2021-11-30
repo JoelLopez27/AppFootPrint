@@ -41,8 +41,6 @@ class FragmentResult : Fragment() {
             }
         }
 
-
-
         mBinding.returnMenu.setOnClickListener {
             it.findNavController().navigate(
                 R.id.action_fragmentResult_to_nav_footprint)
@@ -50,7 +48,5 @@ class FragmentResult : Fragment() {
         mBinding.returnOptions.setOnClickListener {
             this.findNavController().popBackStack()
         }
-
     }
-
 }

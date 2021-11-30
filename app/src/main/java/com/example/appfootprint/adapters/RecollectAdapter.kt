@@ -13,10 +13,10 @@ import kotlinx.android.synthetic.main.list_recollection.view.*
 class RecollectAdapter: RecyclerView.Adapter<RecollectAdapter.RecollectViewHolder>() {
 
 
-    inner class RecollectViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
+        inner class RecollectViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
 
 
-    private val differCallback = object : DiffUtil.ItemCallback<UserRecollect>() {
+        private val differCallback = object : DiffUtil.ItemCallback<UserRecollect>() {
 
         override fun areItemsTheSame(oldItem: UserRecollect, newItem: UserRecollect): Boolean {
             return oldItem.cantidad == newItem.cantidad
@@ -24,8 +24,8 @@ class RecollectAdapter: RecyclerView.Adapter<RecollectAdapter.RecollectViewHolde
 
         override fun areContentsTheSame(oldItem: UserRecollect, newItem: UserRecollect): Boolean {
             return oldItem == newItem
+            }
         }
-    }
 
         val differ = AsyncListDiffer(this, differCallback)
 
@@ -52,6 +52,6 @@ class RecollectAdapter: RecyclerView.Adapter<RecollectAdapter.RecollectViewHolde
         override fun getItemCount(): Int {
             return differ.currentList.size
         }
-}
+    }
 
 

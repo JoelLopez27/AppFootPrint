@@ -151,29 +151,29 @@ class TopRecollectsFragment : Fragment() {
         }
 
 
-    }
+      }
 
-    override fun onStart() {
-        super.onStart()
-        mFirebaseAdapter.startListening()
-        mFirebaseAdapter2.startListening()
-    }
+        override fun onStart() {
+            super.onStart()
+            mFirebaseAdapter.startListening()
+            mFirebaseAdapter2.startListening()
+        }
 
-    override fun onStop() {
-        super.onStop()
-        mFirebaseAdapter.stopListening()
-        mFirebaseAdapter2.stopListening()
-    }
-
-
+        override fun onStop() {
+            super.onStop()
+            mFirebaseAdapter.stopListening()
+            mFirebaseAdapter2.stopListening()
+        }
 
 
-    inner class RecollectTopHolder(view: View) : RecyclerView.ViewHolder(view){
-        val binding = ListRecollectsTopBinding.bind(view)
-    }
 
-    inner class RecollectTopCO2Holder(view: View) : RecyclerView.ViewHolder(view){
-        val binding = ListRecollectsCo2Binding.bind(view)
-    }
+
+        inner class RecollectTopHolder(view: View) : RecyclerView.ViewHolder(view){
+            val binding = ListRecollectsTopBinding.bind(view)
+        }
+
+        inner class RecollectTopCO2Holder(view: View) : RecyclerView.ViewHolder(view){
+            val binding = ListRecollectsCo2Binding.bind(view)
+        }
 
 }

@@ -136,10 +136,24 @@ class MainActivity : AppCompatActivity() {
         override fun onResume() {
             super.onResume()
             mFirebaseAuth?.addAuthStateListener (mAuthListener)
+
+            val navView: NavigationView = mBinding.navView
+            val headerView : View = navView.getHeaderView(0)
+
+            headerView.nameUser.text = FirebaseAuth.getInstance().currentUser?.displayName
+
+            headerView.emailUser.text = FirebaseAuth.getInstance().currentUser?.email
+
+            Glide.with(this)
+                .load(FirebaseAuth.getInstance().currentUser?.photoUrl)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .centerCrop()
+                .into(headerView.imageView)
         }
 
         override fun onPause() {
             super.onPause()
             mFirebaseAuth?.removeAuthStateListener (mAuthListener)
+
         }
     }

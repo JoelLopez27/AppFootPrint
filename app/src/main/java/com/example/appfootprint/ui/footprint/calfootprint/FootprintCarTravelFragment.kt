@@ -51,11 +51,9 @@ class FootprintCarTravelFragment : Fragment() {
                     )
                     it.findNavController()
                         .navigate(R.id.action_footprintCarTravelFragment_to_fragmentResult)
-
             } else {
                 Toast.makeText(activity, "Ingresar Dato Faltante", Toast.LENGTH_SHORT).show()
             }
         }
-
     }
 }
