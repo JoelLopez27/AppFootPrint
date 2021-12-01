@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.appfootprint.databinding.FragmentProfileBinding
@@ -111,6 +112,8 @@ class ProfileFragment : Fragment() {
             AuthUI.getInstance().signOut(it)
                 .addOnCompleteListener {
                     Toast.makeText(context, "Hasta Pronto....", Toast.LENGTH_SHORT).show()
+                        this.findNavController()
+                        .navigate(R.id.action_nav_profile_to_nav_home)
                 }
             }
         }
