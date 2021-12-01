@@ -132,7 +132,7 @@ class AddRecollectFragment : Fragment() {
                                  )
                                      .show()
                              }
-                    }
+                         }
 
                 override fun onCancelled(error: DatabaseError) {
                     Log.w(TAG, "Listener Fue Cancelado")

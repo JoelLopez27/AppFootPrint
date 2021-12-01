@@ -114,4 +114,15 @@ class ProfileFragment : Fragment() {
                 }
             }
         }
+
+    override fun onResume() {
+        super.onResume()
+        mBinding.tvName.text = FirebaseAuth.getInstance().currentUser?.displayName
+        mBinding.tvEmail.text = FirebaseAuth.getInstance().currentUser?.email
+        Glide.with(this)
+            .load(FirebaseAuth.getInstance().currentUser?.photoUrl)
+            .diskCacheStrategy(DiskCacheStrategy.ALL)
+            .centerCrop()
+            .into(mBinding.circleImageView)
+    }
     }
