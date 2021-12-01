@@ -108,37 +108,36 @@ class AddRecollectFragment : Fragment() {
                 }
 
 
+                 mBinding.publicarFeed.setOnCheckedChangeListener { button, b ->
 
-            val connectedRef =  FirebaseDatabase.getInstance().getReference(".info/connected")
+            if ( mBinding.publicarFeed.isChecked) {
+                mBinding.feedContainer.visibility = View.VISIBLE
+            }else{
+                mBinding.feedContainer.visibility = View.GONE
+            }
+
+        }
+
+        val connectedRef =  FirebaseDatabase.getInstance().getReference(".info/connected")
 
             connectedRef.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val connected = snapshot.getValue(Boolean::class.java) ?: false
 
-                    mBinding.publicarFeed.setOnCheckedChangeListener { button, b ->
-
-                        if (mBinding.publicarFeed.isChecked) {
-                            if (!connected) {
-                                Snackbar.make(
-                                    view,
-                                    "No hay Conexión a Internet, Revise su Conexión",
-                                    Snackbar.LENGTH_SHORT
-                                )
-                                    .show()
-                            }
-                            mBinding.feedContainer.visibility = View.VISIBLE
-                        }else{
-                            mBinding.feedContainer.visibility = View.GONE
-                        }
+                             if (!connected) {
+                                 Snackbar.make(
+                                     view,
+                                     "No hay Conexión a Internet, Revise su Conexión",
+                                     Snackbar.LENGTH_SHORT
+                                 )
+                                     .show()
+                             }
                     }
-
-                }
 
                 override fun onCancelled(error: DatabaseError) {
                     Log.w(TAG, "Listener Fue Cancelado")
                 }
             })
-
 
             mStorageReference = FirebaseStorage.getInstance().reference
             mDatabaseReference = FirebaseDatabase.getInstance().reference.child(PATH_RECOLLECT)
